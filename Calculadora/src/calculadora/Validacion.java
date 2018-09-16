@@ -48,7 +48,7 @@ public class Validacion {
         int n=expresion.length();
         while(i<n && resp){
             if(esOperador(expresion.charAt(i)))
-                if(esOperador(expresion.charAt(i+1)))
+                if(i == n-1 || esOperador(expresion.charAt(i+1)))
                     resp=false;
         }
         return resp;
