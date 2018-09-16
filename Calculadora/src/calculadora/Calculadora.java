@@ -9,7 +9,17 @@ package calculadora;
  *
  * @author alberto
  */
+
+
 public class Calculadora {
+    
+    public static boolean esOperando(char e){
+        boolean respuesta = false;
+        if ((e>='0' && e<='9') || (e=='.')) {
+            respuesta = true;
+        }
+        return respuesta;
+    }
 
     /**
      * @param args the command line arguments
@@ -20,6 +30,7 @@ public class Calculadora {
         System.out.println("Soy Mar");
         System.out.println("Soy Alberto");
         System.out.println("Soy David");
+        System.out.println("Soy pato");
     }
     
 }
