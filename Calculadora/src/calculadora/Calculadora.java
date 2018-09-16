@@ -20,6 +20,18 @@ public class Calculadora {
         }
         return respuesta;
     }
+    
+        
+    public static boolean esOperador(char e){
+        boolean respuesta = false;
+        char[] set = {'+','-','*','/','^'};
+        for (char p:set){
+            if(p==e){
+                respuesta = true;
+            }
+        }
+        return respuesta;
+    }
 
     /**
      * @param args the command line arguments
