@@ -11,7 +11,9 @@ package calculadora;
  */
 public class Validacion {
     
-    
+    /*public static boolean validaOperadores (String expresion){
+        for()
+    }*/
     
     
 }
