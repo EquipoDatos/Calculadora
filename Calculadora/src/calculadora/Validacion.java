@@ -19,7 +19,13 @@ public class Validacion {
         return respuesta;
     }
     
-    
+     public static boolean esOperador(char e){
+        boolean respuesta = false;
+        if ((e>='0' && e<='9') || (e=='.')) {
+            respuesta = true;
+        }
+        return respuesta;
+    }
     
     public boolean validacionParentesis(String expresion){
         boolean resp = true;

@@ -13,13 +13,7 @@ package calculadora;
 
 public class Calculadora {
     
-    public static boolean esOperando(char e){
-        boolean respuesta = false;
-        if ((e>='0' && e<='9') || (e=='.')) {
-            respuesta = true;
-        }
-        return respuesta;
-    }
+   
 
     /**
      * @param args the command line arguments
