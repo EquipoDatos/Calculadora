@@ -17,7 +17,8 @@ public class Calculadora {
     public static void main(String[] args) {
         System.out.println("Hola");
         System.out.println("");
-        System.out.println("Soy Marco");
+        System.out.println("Soy Mar");
+        System.out.println("Soy Alberto");
     }
     
 }
