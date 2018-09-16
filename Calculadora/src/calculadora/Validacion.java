@@ -11,6 +11,16 @@ package calculadora;
  */
 public class Validacion {
     
+    public static boolean esOperando(char e){
+        boolean respuesta = false;
+        if ((e>='0' && e<='9') || (e=='.')) {
+            respuesta = true;
+        }
+        return respuesta;
+    }
+    
+    
+    
     public boolean validacionParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
@@ -32,13 +42,18 @@ public class Validacion {
         return pila.isEmpty() && resp;
     }
     
-    public boolean validaOperandos(String expresion){
+    public boolean validaOperadores(String expresion){
         boolean resp=true;
         int i=0;
         int n=expresion.length();
         while(i<n && resp){
-            
+            if(esOperador(expresion.charAt(i)))
+                if(esOperador(expresion.charAt(i+1)))
+                    resp=false;
         }
+        return resp;
     }
-    
+    public static void main(String[] args) {
+        
+    }
 }
