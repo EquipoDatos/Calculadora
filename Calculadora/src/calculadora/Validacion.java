@@ -52,6 +52,7 @@ public class Validacion {
         boolean resp = true;
         int i = 1;
         char a, b;
+        if(expresion.length()>=2)
         while(resp && i<expresion.length()){ 
             a = expresion.charAt(i-1);
             b = expresion.charAt(i);
@@ -95,7 +96,7 @@ public class Validacion {
                     }
             i++;
         }
-        return pila.isEmpty() && resp && colindaParentesis(expresion) && parentesisVacio(expresion);
+        return pila.isEmpty() && resp && colindaParentesis(expresion) && parentesisVacio(expresion) && puntoEntreParentesis(expresion);
     }
     
     public static boolean validaOperadores(String expresion){
@@ -117,6 +118,7 @@ public class Validacion {
         char a, b, c;
         int i=2;
         boolean resp=true;
+        if(expresion.length()>=3)
         while(i<expresion.length() && resp){
             a=expresion.charAt(i-2);
             b=expresion.charAt(i-1);
@@ -153,9 +155,11 @@ public class Validacion {
     }
     
     public static void main(String[] args) {
-        System.out.println(valida("(7+6)+9+.(.+)"));
+        System.out.println(valida("2+(3*3)"));
+        System.out.println(valida("2+(.)"));
         /*
-        falta validar que no haya puros operadores o un punto entre paréntesis.
+        falta validar que no haya puros operadores.
         */
+
     }
 }
