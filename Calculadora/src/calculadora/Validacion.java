@@ -67,14 +67,15 @@ public class Validacion {
         boolean resp = true;
         int i = 2;
         char a, b, c;
-        while(resp && i<expresion.length()){ 
-            a = expresion.charAt(i-2);
-            b = expresion.charAt(i-1);
-            c = expresion.charAt(i);
-            if(a=='(' && b=='.' && c==')')
-                resp=false;
-            i++;
-        } 
+        if(expresion.length()>=3)
+            while(resp && i<expresion.length()){ 
+                a = expresion.charAt(i-2);
+                b = expresion.charAt(i-1);
+                c = expresion.charAt(i);
+                if(a=='(' && b=='.' && c==')')
+                    resp=false;
+                i++;
+            } 
         return resp;
     }
     
@@ -119,16 +120,16 @@ public class Validacion {
         int i=2;
         boolean resp=true;
         if(expresion.length()>=3)
-        while(i<expresion.length() && resp){
-            a=expresion.charAt(i-2);
-            b=expresion.charAt(i-1);
-            c=expresion.charAt(i);
-            if(b == '.' && esOperador(a) && esOperador(c))
-                resp=false;
-            i++;
-        }
+            while(i<expresion.length() && resp){
+                a=expresion.charAt(i-2);
+                b=expresion.charAt(i-1);
+                c=expresion.charAt(i);
+                if(b == '.' && esOperador(a) && esOperador(c))
+                    resp=false;
+                i++;
+            }
         return resp;
-    }
+        }
     
     public static boolean validaDecimales(String expresion){
         boolean resp=true;
