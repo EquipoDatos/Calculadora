@@ -14,7 +14,25 @@ package calculadora;
 public class Calculadora {
     
    
+    public static boolean esOperando(char e){
+        boolean respuesta = false;
+        if ((e>='0' && e<='9') || (e=='.')) {
+            respuesta = true;
+        }
+        return respuesta;
+    }
 
+        
+    public static boolean esOperador(char e){
+        boolean respuesta = false;
+        char[] set = {'+','-','*','/','^'};
+        for (char p:set){
+            if(p==e){
+                respuesta = true;
+            }
+        }
+        return respuesta;
+    }
     /**
      * @param args the command line arguments
      */
