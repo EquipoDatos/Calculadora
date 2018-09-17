@@ -44,15 +44,14 @@ public class Validacion {
                     if(esOperando(b) || b == '(' )
                         resp = false;
                 i++;
-            }
+                }
             return resp;
-    }
+        }
     
     public static boolean parentesisVacio(String expresion){
         boolean resp = true;
         int i = 1;
         char a, b;
-        if(expresion.length()>=2)
         while(resp && i<expresion.length()){ 
             a = expresion.charAt(i-1);
             b = expresion.charAt(i);
@@ -60,23 +59,22 @@ public class Validacion {
                 resp=false;
             i++;
         } 
-        return resp;
+    return resp;
     }
     
     public static boolean puntoEntreParentesis(String expresion){
         boolean resp = true;
         int i = 2;
         char a, b, c;
-        if(expresion.length()>=3)
-            while(resp && i<expresion.length()){ 
-                a = expresion.charAt(i-2);
-                b = expresion.charAt(i-1);
-                c = expresion.charAt(i);
-                if(a=='(' && b=='.' && c==')')
-                    resp=false;
-                i++;
-            } 
-        return resp;
+        while(resp && i<expresion.length()){ 
+            a = expresion.charAt(i-2);
+            b = expresion.charAt(i-1);
+            c = expresion.charAt(i);
+            if(a=='(' && b=='.' && c==')')
+                resp=false;
+            i++;
+        } 
+    return resp;
     }
     
     public static boolean validaParentesis(String expresion){
@@ -104,7 +102,7 @@ public class Validacion {
         boolean resp=true;
         int i=0;
         int n=expresion.length();
-        if(esOperador(expresion.charAt(i)))
+        if(expresion.length()>0 && esOperador(expresion.charAt(i)))
             resp=false;
         while(i<n && resp){
             if(esOperador(expresion.charAt(i)))
@@ -119,16 +117,15 @@ public class Validacion {
         char a, b, c;
         int i=2;
         boolean resp=true;
-        if(expresion.length()>=3)
-            while(i<expresion.length() && resp){
-                a=expresion.charAt(i-2);
-                b=expresion.charAt(i-1);
-                c=expresion.charAt(i);
-                if(b == '.' && esOperador(a) && esOperador(c))
-                    resp=false;
-                i++;
-            }
-        return resp;
+        while(i<expresion.length() && resp){
+            a=expresion.charAt(i-2);
+            b=expresion.charAt(i-1);
+            c=expresion.charAt(i);
+            if(b == '.' && esOperador(a) && esOperador(c))
+                resp=false;
+            i++;
+        }
+    return resp;
         }
     
     public static boolean validaDecimales(String expresion){
@@ -136,8 +133,8 @@ public class Validacion {
         int i=1;
         boolean bandera= false;
         int n=expresion.length();
-        if(expresion.charAt(0) == '.')
-            bandera = true;
+        if(expresion.length()>0 && expresion.charAt(0) == '.')
+                bandera = true;
         while(i<n && resp){
             if(esOperador(expresion.charAt(i)))
                 bandera = false;
@@ -158,9 +155,9 @@ public class Validacion {
     public static void main(String[] args) {
         System.out.println(valida("2+(3*3)"));
         System.out.println(valida("2+(.)"));
+        System.out.println(valida(""));
         /*
         falta validar que no haya puros operadores.
         */
-
     }
 }
