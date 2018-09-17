@@ -62,6 +62,21 @@ public class Validacion {
         return resp;
     }
     
+    public static boolean puntoEntreParentesis(String expresion){
+        boolean resp = true;
+        int i = 2;
+        char a, b, c;
+        while(resp && i<expresion.length()){ 
+            a = expresion.charAt(i-2);
+            b = expresion.charAt(i-1);
+            c = expresion.charAt(i);
+            if(a=='(' && b=='.' && c==')')
+                resp=false;
+            i++;
+        } 
+        return resp;
+    }
+    
     public static boolean validaParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
