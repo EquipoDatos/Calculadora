@@ -11,7 +11,7 @@ package calculadora;
  */
 public class Validacion {
     
-    public static boolean esOperando(char e){
+    public static boolean esNumero(char e){
         boolean respuesta = false;
         if ((e>='0' && e<='9') || (e=='.')) {
             respuesta = true;
@@ -37,11 +37,11 @@ public class Validacion {
             while(i<expresion.length() && resp){
                 a=expresion.charAt(i-1);
                 b=expresion.charAt(i);
-                if(b == '(')
-                    if(esOperando(a) || a == ')' )
+                if(esNumero(a))
+                    if(b == '(')
                         resp = false;
                 if(a == ')')
-                    if(esOperando(b) || b == '(' )
+                    if(esNumero(b) || b == '(' )
                         resp = false;
                 i++;
                 }
