@@ -30,39 +30,6 @@ public class Validacion {
         return respuesta;
     }
     
-    public static boolean colindaParentesis(String expresion){
-            char a, b;
-            int i=1;
-            boolean resp = true;
-            while(i<expresion.length() && resp){
-                a=expresion.charAt(i-1);
-                b=expresion.charAt(i);
-                if(esNumero(a) && b=='(')
-                    resp = false;
-                if(a == ')' && (esNumero(b) || b == '('))
-                    resp = false;
-                if(a=='(' && b==')') 
-                    resp=false;
-                i++;
-                }
-            return resp;
-        }
-    
-    public static boolean puntoEntreParentesis(String expresion){
-        boolean resp = true;
-        int i = 2;
-        char a, b, c;
-        while(resp && i<expresion.length()){ 
-            a = expresion.charAt(i-2);
-            b = expresion.charAt(i-1);
-            c = expresion.charAt(i);
-            if(a=='(' && b=='.' && c==')')
-                resp=false;
-            i++;
-        } 
-    return resp;
-    }
-    
     public static boolean ordenParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
@@ -84,18 +51,51 @@ public class Validacion {
         return pila.isEmpty() && resp;
     }
     
-    public static boolean validaParentesis(String expresion){
-        return ordenParentesis(expresion) && colindaParentesis(expresion) && puntoEntreParentesis(expresion);
+    public static boolean noColindaParentesis(String expresion){
+            char a, b;
+            int i=1;
+            boolean resp = true;
+            while(i<expresion.length() && resp){
+                a=expresion.charAt(i-1);
+                b=expresion.charAt(i);
+                if(esNumero(a) && b=='(')
+                    resp = false;
+                if(a == ')' && (esNumero(b) || b == '('))
+                    resp = false;
+                if(a=='(' && b==')') 
+                    resp=false;
+                i++;
+                }
+            return resp;
+        }
+    
+    public static boolean noPuntoEntreParentesis(String expresion){
+        boolean resp = true;
+        int i = 2;
+        char a, b, c;
+        while(resp && i<expresion.length()){ 
+            a = expresion.charAt(i-2);
+            b = expresion.charAt(i-1);
+            c = expresion.charAt(i);
+            if(a=='(' && b=='.' && c==')')
+                resp=false;
+            i++;
+        } 
+    return resp;
     }
     
-    public static boolean colindaOperadorParentesis(String expresion){
+    public static boolean validaParentesis(String expresion){
+        return ordenParentesis(expresion) && noColindaParentesis(expresion) && noPuntoEntreParentesis(expresion);
+    }
+    
+    public static boolean noColindaOperadoresParentesis(String expresion){
         char a, b;
         int i=1;
         boolean resp=true;
         while(i<expresion.length() && resp){
             a=expresion.charAt(i-1);
             b=expresion.charAt(i);
-            if(esOperador(a) && b==')')
+            if(esOperador(a) && (b==')' || esOperador(b)))
                 resp=false;
             if(a=='(' && esOperador(b))
                 resp=false;
@@ -104,21 +104,7 @@ public class Validacion {
     return resp;
     }
     
-    public static boolean colindaOperadores(String expresion){
-        char a, b;
-        int i=1;
-        boolean resp=true;
-        while(i<expresion.length() && resp){
-            a=expresion.charAt(i-1);
-            b=expresion.charAt(i);
-            if(esOperador(a) && esOperador(b))
-                resp=false;
-            i++;
-        }
-    return resp;
-    }
-    
-    public static boolean operatorPrincipioFinal(String expresion){
+    public static boolean noOperadorPrincipioFinal(String expresion){
         char a;
         int i=0;
         int n=expresion.length();
@@ -133,25 +119,10 @@ public class Validacion {
     }
     
     public static boolean validaOperadores(String expresion){
-        return colindaOperadores(expresion) && colindaOperadorParentesis(expresion) && operatorPrincipioFinal(expresion);
+        return noColindaOperadoresParentesis(expresion) && noOperadorPrincipioFinal(expresion);
     }
     
-    public static boolean puntoEntreOperadores(String expresion){
-        char a, b, c;
-        int i=2;
-        boolean resp=true;
-        while(i<expresion.length() && resp){
-            a=expresion.charAt(i-2);
-            b=expresion.charAt(i-1);
-            c=expresion.charAt(i);
-            if(esOperador(a) && b == '.' && esOperador(c))
-                resp=false;
-            i++;
-        }
-    return resp;
-        }
-    
-    public static boolean validaDecimales(String expresion){
+    public static boolean unPuntoPorNumero(String expresion){
         boolean resp=true;
         int i=1;
         boolean bandera= false;
@@ -167,7 +138,26 @@ public class Validacion {
                 bandera = true;
              i++;
             }
-        return resp && puntoEntreOperadores(expresion);
+        return resp;
+    }
+    
+    public static boolean noPuntoEntreOperadores(String expresion){
+        char a, b, c;
+        int i=2;
+        boolean resp=true;
+        while(i<expresion.length() && resp){
+            a=expresion.charAt(i-2);
+            b=expresion.charAt(i-1);
+            c=expresion.charAt(i);
+            if(esOperador(a) && b == '.' && esOperador(c))
+                resp=false;
+            i++;
+        }
+    return resp;
+        }
+    
+    public static boolean validaDecimales(String expresion){
+        return unPuntoPorNumero(expresion) && noPuntoEntreOperadores(expresion);
     }
     
     public static boolean valida(String expresion){
@@ -175,9 +165,37 @@ public class Validacion {
     }
     
     public static void testValida(){
-        System.out.println(valida("2+(1*3)"));
-        System.out.println(valida("2+(.1.)"));
-        System.out.println(valida("(2)"));
+        /* ordenParentesis */
+        System.out.println(valida(")1+2(")==false);
+        System.out.println(valida("(1+2)")==true);
+        System.out.println(valida("((1+2)")==false);
+        System.out.println(valida("((1+2))")==true);
+        System.out.println(valida("(1+2))")==false);
+        /* noColindaParentesis */
+        System.out.println(valida("1+2+()")==false);
+        System.out.println(valida("(1+2)(1+2)")==false);
+        System.out.println(valida("(1+2)*(1+2)")==true);
+        System.out.println(valida("(1+2(1+2))")==false);
+        System.out.println(valida("((1+2)1+2)")==false);
+        /* noPuntoEntreParentesis */
+        System.out.println(valida("1+2+(.)")==false);
+        System.out.println(valida("1+(2)")==true);
+        /* noColindaOperadoresParentesis */
+        System.out.println(valida("1++2")==false);
+        System.out.println(valida("(+1+2)")==false);
+        System.out.println(valida("(1+2+)")==false);
+        /* noOperadorPrincipioFinal */
+        System.out.println(valida("+1+2")==false);
+        System.out.println(valida("1+2+")==false);
+        /* unPuntoPorNumero */
+        System.out.println(valida("1.2")==true);
+        System.out.println(valida(".12")==true);
+        System.out.println(valida("12.")==true);
+        System.out.println(valida(".1.2")==false);
+        System.out.println(valida("1+2..")==false);
+        System.out.println(valida("1+..2")==false);
+        /* noPuntoEntreOperadores */
+        System.out.println(valida("1+.+2")==false);
     }
     
     public static void main(String[] args) {
