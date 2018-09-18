@@ -51,7 +51,9 @@ public class Validacion {
                     }
             i++;
         }
-        return pila.isEmpty() && resp;
+        if (!(pila.isEmpty()))
+                resp = false;
+        return resp;
     }
     
     public static boolean noColindaParentesis(String expresion){
