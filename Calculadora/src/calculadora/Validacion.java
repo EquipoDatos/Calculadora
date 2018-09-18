@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package calculadora;
-
 /**
  *
  * @author alberto
@@ -204,8 +203,5 @@ public class Validacion {
         System.out.println(valida("1+(2)")==true);
     }
     
-    public static void main(String[] args) {
-        testValida();
-    }
 }
 

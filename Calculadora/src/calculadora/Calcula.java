@@ -86,23 +86,20 @@ public class Calcula {
         return resultado;
     }
     
-       
-    
-    public static void main(String[] args) {
+        public static void testCalcula() {
             Object o = "12.3";
             System.out.println(o.getClass().getSimpleName());
-            String a;
+            String a, cadena;
             a="((4.2+7)-8)+(7*2)";
-            ArrayList<Object> b;
+            cadena = "";
+            ArrayList<Object> b, c;
             b=convierteAArrayList(a);
-            /*for(int i=0; i<b.size(); i++){
-                System.out.println(b.get(i));
-            }*/
-            ArrayList<Object> c;
             c=traduccionAPostfijo(b);
             for(int i=0; i<c.size(); i++){
-                System.out.println(c.get(i));
+                cadena += c.get(i);
+                cadena += " ";
             }
-    }
-    
+            System.out.println(a);
+            System.out.println(cadena);
+    } 
 }
