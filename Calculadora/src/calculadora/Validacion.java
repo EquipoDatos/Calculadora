@@ -164,6 +164,7 @@ public class Validacion {
         return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion);
     }
     
+    /* Todos los prints del test deben ser 'true' */
     public static void testValida(){
         /* ordenParentesis */
         System.out.println(valida(")1+2(")==false);
