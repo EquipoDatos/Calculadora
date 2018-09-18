@@ -77,7 +77,7 @@ public class Validacion {
     return resp;
     }
     
-    public static boolean validaParentesis(String expresion){
+    public static boolean ordenParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
         int i, n;
@@ -95,7 +95,11 @@ public class Validacion {
                     }
             i++;
         }
-        return pila.isEmpty() && resp && colindaParentesis(expresion) && parentesisVacio(expresion) && entreParentesis(expresion);
+        return pila.isEmpty() && resp;
+    }
+    
+    public static boolean validaParentesis(String expresion){
+        return ordenParentesis(expresion) && colindaParentesis(expresion) && parentesisVacio(expresion) && entreParentesis(expresion);
     }
     
     public static boolean validaOperadores(String expresion){
@@ -113,7 +117,7 @@ public class Validacion {
         return resp;
     }
     
-    public static boolean puntoEntreOperandos(String expresion){
+    public static boolean puntoEntreNumeros(String expresion){
         char a, b, c;
         int i=2;
         boolean resp=true;
@@ -144,7 +148,7 @@ public class Validacion {
                 bandera = true;
              i++;
             }
-        return resp && puntoEntreOperandos(expresion);
+        return resp && puntoEntreNumeros(expresion);
     }
     
     public static boolean valida(String expresion){
