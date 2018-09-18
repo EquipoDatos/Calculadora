@@ -62,7 +62,7 @@ public class Validacion {
     return resp;
     }
     
-    public static boolean puntoEntreParentesis(String expresion){
+    public static boolean entreParentesis(String expresion){
         boolean resp = true;
         int i = 2;
         char a, b, c;
@@ -70,7 +70,7 @@ public class Validacion {
             a = expresion.charAt(i-2);
             b = expresion.charAt(i-1);
             c = expresion.charAt(i);
-            if(a=='(' && b=='.' && c==')')
+            if(a=='(' && (b=='.' || esOperador(b)) && c==')')
                 resp=false;
             i++;
         } 
@@ -95,7 +95,7 @@ public class Validacion {
                     }
             i++;
         }
-        return pila.isEmpty() && resp && colindaParentesis(expresion) && parentesisVacio(expresion) && puntoEntreParentesis(expresion);
+        return pila.isEmpty() && resp && colindaParentesis(expresion) && parentesisVacio(expresion) && entreParentesis(expresion);
     }
     
     public static boolean validaOperadores(String expresion){
@@ -113,7 +113,7 @@ public class Validacion {
         return resp;
     }
     
-    public static boolean entreOperandos(String expresion){
+    public static boolean puntoEntreOperandos(String expresion){
         char a, b, c;
         int i=2;
         boolean resp=true;
