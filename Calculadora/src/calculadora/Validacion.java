@@ -113,7 +113,7 @@ public class Validacion {
         return resp;
     }
     
-    public static boolean puntoEntreOperandos(String expresion){
+    public static boolean entreOperandos(String expresion){
         char a, b, c;
         int i=2;
         boolean resp=true;
@@ -147,7 +147,6 @@ public class Validacion {
         return resp && puntoEntreOperandos(expresion);
     }
     
-    
     public static boolean valida(String expresion){
         return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion);
     }
@@ -155,7 +154,7 @@ public class Validacion {
     public static void main(String[] args) {
         System.out.println(valida("2+(3*3)"));
         System.out.println(valida("2+(.)"));
-        System.out.println(valida(""));
+        System.out.println(valida("(-)"));
         /*
         falta validar que no haya puros operadores.
         */
