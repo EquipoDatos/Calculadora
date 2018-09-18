@@ -5,7 +5,6 @@
  */
 package calculadora;
 
-import static calculadora.Validacion.testValida;
 import java.util.ArrayList;
 
 /**
