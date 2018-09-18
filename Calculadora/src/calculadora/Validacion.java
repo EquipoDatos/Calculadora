@@ -22,25 +22,28 @@ public class Validacion {
     public static boolean esOperador(char e){
         boolean resp = false;
         char[] set = {'+','-','*','/'};
-        int i=0;
-        while (i<set.length && e != set[i])
+        int i = 0;
+        while( resp == false && i<set.length){
+            if(set[i] == e)
+                resp = true;
             i++;
-        if (i != set.length)
-            resp = true;
+        }
         return resp;
     }
     
     public static boolean ordenParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
+        char a;
         int i, n;
         i=0;
         n=expresion.length();
         while(i<n && resp){
-            if(expresion.charAt(i) == '(')
-                pila.push(expresion.charAt(i));
+            a = expresion.charAt(i);
+            if(a == '(')
+                pila.push(a);
             else
-                if(expresion.charAt(i) == ')')
+                if(a == ')')
                     try{
                         pila.pop();
                     }catch(EmptyCollectionException e){
@@ -109,17 +112,19 @@ public class Validacion {
     
     public static boolean unPuntoPorNumero(String expresion){
         boolean resp=true;
+        char a;
         int i=1;
         boolean bandera= false;
         int n=expresion.length();
         if(expresion.length()>0 && expresion.charAt(0) == '.')
                 bandera = true;
         while(i<n && resp){
-            if(esOperador(expresion.charAt(i)))
+            a = expresion.charAt(i);
+            if(esOperador(a))
                 bandera = false;
-            if(bandera && expresion.charAt(i) == '.')
+            if(bandera && a == '.')
                     resp = false;
-            else if(bandera == false && expresion.charAt(i) == '.')
+            else if(!(bandera) && a == '.')
                 bandera = true;
              i++;
             }
