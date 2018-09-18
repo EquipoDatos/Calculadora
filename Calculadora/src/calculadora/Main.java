@@ -5,8 +5,6 @@
  */
 package calculadora;
 
-import calculadora.Validacion.*;
-import calculadora.Calcula.*;
 /**
  *
  * @author marcopalermo
