@@ -69,23 +69,8 @@ public class Validacion {
             return resp;
         }
     
-    public static boolean noPuntoEntreParentesis(String expresion){
-        boolean resp = true;
-        int i = 2;
-        char a, b, c;
-        while(resp && i<expresion.length()){ 
-            a = expresion.charAt(i-2);
-            b = expresion.charAt(i-1);
-            c = expresion.charAt(i);
-            if(a=='(' && b=='.' && c==')')
-                resp=false;
-            i++;
-        } 
-    return resp;
-    }
-    
     public static boolean validaParentesis(String expresion){
-        return ordenParentesis(expresion) && noColindaParentesis(expresion) && noPuntoEntreParentesis(expresion);
+        return ordenParentesis(expresion) && noColindaParentesis(expresion);
     }
     
     public static boolean noColindaOperadoresParentesis(String expresion){
@@ -141,7 +126,7 @@ public class Validacion {
         return resp;
     }
     
-    public static boolean noPuntoEntreOperadores(String expresion){
+    public static boolean noPuntoEntreOperadoresParentesis(String expresion){
         char a, b, c;
         int i=2;
         boolean resp=true;
@@ -151,13 +136,15 @@ public class Validacion {
             c=expresion.charAt(i);
             if(esOperador(a) && b == '.' && esOperador(c))
                 resp=false;
+            if(a=='(' && b=='.' && c==')')
+                resp=false;
             i++;
         }
     return resp;
         }
     
     public static boolean validaDecimales(String expresion){
-        return unPuntoPorNumero(expresion) && noPuntoEntreOperadores(expresion);
+        return unPuntoPorNumero(expresion) && noPuntoEntreOperadoresParentesis(expresion);
     }
     
     public static boolean valida(String expresion){
@@ -178,9 +165,6 @@ public class Validacion {
         System.out.println(valida("(1+2)*(1+2)")==true);
         System.out.println(valida("(1+2(1+2))")==false);
         System.out.println(valida("((1+2)1+2)")==false);
-        /* noPuntoEntreParentesis */
-        System.out.println(valida("1+2+(.)")==false);
-        System.out.println(valida("1+(2)")==true);
         /* noColindaOperadoresParentesis */
         System.out.println(valida("1++2")==false);
         System.out.println(valida("(+1+2)")==false);
@@ -195,8 +179,10 @@ public class Validacion {
         System.out.println(valida(".1.2")==false);
         System.out.println(valida("1+2..")==false);
         System.out.println(valida("1+..2")==false);
-        /* noPuntoEntreOperadores */
+        /* noPuntoEntreOperadoresParentesis */
         System.out.println(valida("1+.+2")==false);
+        System.out.println(valida("1+2+(.)")==false);
+        System.out.println(valida("1+(2)")==true);
     }
     
     public static void main(String[] args) {
