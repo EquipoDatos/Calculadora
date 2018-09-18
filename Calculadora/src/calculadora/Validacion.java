@@ -12,22 +12,22 @@ package calculadora;
 public class Validacion {
     
     public static boolean esNumero(char e){
-        boolean respuesta = false;
+        boolean resp = false;
         if ((e>='0' && e<='9') || (e=='.')) {
-            respuesta = true;
+            resp = true;
         }
-        return respuesta;
+        return resp;
     }
     
     public static boolean esOperador(char e){
-        boolean respuesta = false;
+        boolean resp = false;
         char[] set = {'+','-','*','/'};
         int i=0;
         while (i<set.length && e != set[i])
             i++;
         if (i != set.length)
-            respuesta = true;
-        return respuesta;
+            resp = true;
+        return resp;
     }
     
     public static boolean ordenParentesis(String expresion){
