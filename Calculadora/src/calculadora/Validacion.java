@@ -31,6 +31,18 @@ public class Validacion {
         return resp;
     }
     
+    public static boolean esParentesis(char e){
+        boolean resp = false;
+        char[] set = {'(',')'};
+        int i = 0;
+        while( resp == false && i<set.length){
+            if(set[i] == e)
+                resp = true;
+            i++;
+        }
+        return resp;
+    }
+    
     public static boolean ordenParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
