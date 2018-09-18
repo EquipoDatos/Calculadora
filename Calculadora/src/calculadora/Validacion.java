@@ -102,6 +102,22 @@ public class Validacion {
         return ordenParentesis(expresion) && colindaParentesis(expresion) && parentesisVacio(expresion) && entreParentesis(expresion);
     }
     
+    public static boolean colindaOperatorParentesis(String expresion){
+        char a, b;
+        int i=1;
+        boolean resp=true;
+        while(i<expresion.length() && resp){
+            a=expresion.charAt(i-1);
+            b=expresion.charAt(i);
+            if(esOperador(a) && b==')')
+                resp=false;
+            if(a=='(' && esOperador(b))
+                resp=false;
+            i++;
+        }
+    return resp;
+    }
+    
     public static boolean validaOperadores(String expresion){
         boolean resp=true;
         int i=0;
@@ -114,7 +130,7 @@ public class Validacion {
                     resp=false;
             i++;
         }
-        return resp;
+        return resp && colindaOperatorParentesis(expresion);
     }
     
     public static boolean puntoEntreNumeros(String expresion){
@@ -158,7 +174,7 @@ public class Validacion {
     public static void main(String[] args) {
         System.out.println(valida("2+(3*3)"));
         System.out.println(valida("2+(.)"));
-        System.out.println(valida("(-)"));
+        System.out.println(valida("(1-1-)"));
         /*
         falta validar que no haya puros operadores.
         */
