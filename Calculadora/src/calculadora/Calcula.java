@@ -56,7 +56,7 @@ public class Calcula {
         }
         return resp;
     }
-    public static ArrayList<Object> traduccionAPostfijo(ArrayList<Object> a){
+    public static ArrayList<Object> traduccionAPostfija(ArrayList<Object> a){
         ArrayList<Object> resultado = new ArrayList();
         PilaA<Character> pila= new PilaA();
         int i=0;
@@ -87,14 +87,12 @@ public class Calcula {
     }
     
         public static void testCalcula() {
-            Object o = "12.3";
-            System.out.println(o.getClass().getSimpleName());
             String a, cadena;
             a="((4.2+7)-8)+(7*2)";
             cadena = "";
             ArrayList<Object> b, c;
             b=convierteAArrayList(a);
-            c=traduccionAPostfijo(b);
+            c=traduccionAPostfija(b);
             for(int i=0; i<c.size(); i++){
                 cadena += c.get(i);
                 cadena += " ";
