@@ -171,6 +171,7 @@ public class Validacion {
     
     /* Todos los prints del test deben ser 'true' */
     public static void testValida(){
+        System.out.println("\nTest Valida:");
         /* ordenParentesis */
         System.out.println(valida(")1+2(")==false);
         System.out.println(valida("(1+2)")==true);

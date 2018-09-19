@@ -87,6 +87,7 @@ public class Calcula {
     }
     
         public static void testCalcula() {
+            System.out.println("\nTest Calcula:");
             String a, cadena;
             a="((4.2+7)-8)+(7*2)";
             cadena = "";
