@@ -14,30 +14,29 @@ import java.util.ArrayList;
 public class Calcula {
     public static ArrayList<Object> convierteAArrayList(String expresion){
        StringBuilder cadena = new StringBuilder();
-       int index = 0;
-       char b;
        ArrayList<Object> resultado = new ArrayList();
+       char c;
        for(int i=0; i<expresion.length(); i++){
-           b=expresion.charAt(i);
-           if(!(cadena.toString().isEmpty()) && !Validacion.esNumero(b)){
+           c=expresion.charAt(i);
+           if(!(cadena.toString().isEmpty()) && !Validacion.esNumero(c)){
                resultado.add(Double.valueOf(cadena.toString()));
                cadena= new StringBuilder();
-               resultado.add(b);
+               resultado.add(c);
            }
-           else if((cadena.toString().isEmpty()) && !Validacion.esNumero(b)){
-               resultado.add(b);
+           else if((cadena.toString().isEmpty()) && !Validacion.esNumero(c)){
+               resultado.add(c);
                cadena= new StringBuilder();
            }
            else
-               cadena.append(b);  
+               cadena.append(c);  
         }
        return resultado;
        }
     
-    public static int indicaPrioridad(char a){
+    public static int indicaPrioridad(char c){
         int resp=0;
     
-        switch(a){
+        switch(c){
             case '(': 
                 resp=1;
                 break;
@@ -56,13 +55,13 @@ public class Calcula {
         }
         return resp;
     }
-    public static ArrayList<Object> traduccionAPostfija(ArrayList<Object> a){
+    public static ArrayList<Object> traduccionAPostfija(ArrayList<Object> array){
         ArrayList<Object> resultado = new ArrayList();
         PilaA<Character> pila= new PilaA();
         int i=0;
         Object obj;
-        while(i<a.size()){
-            obj = a.get(i);
+        while(i<array.size()){
+            obj = array.get(i);
             if(obj instanceof Double)
                 resultado.add(obj);
             else{
