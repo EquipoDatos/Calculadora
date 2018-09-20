@@ -16,10 +16,7 @@ public class Main {
         /*
         Validacion.testValida("(1+1.1)+1");
         */
-        String expresion="1+1";
-        Calcula.testConvierteAArrayList(expresion);
-        Calcula.testTraduccionAPostfija(expresion);
-        Calcula.testTraduccionAPilaA(expresion);
-        Calcula.testCalculaResultado(expresion);
+        String expresion="((1+1)*2+(1+1)*5)/7+17";
+        Calcula.testCalcula(expresion);
         }
 }

@@ -169,6 +169,18 @@ public class Validacion {
         return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion);
     }
     
+    public static void testValida(String expresion){
+        boolean valorDeRealidad;
+        valorDeRealidad=valida(expresion);
+        System.out.println("\nTest Valida:");
+        System.out.println(expresion);
+        System.out.println("expression Validity is: "+valorDeRealidad);
+    }
+    
+    public static void testValida(String expresion, boolean valorDeRealidad){
+        System.out.println(valida(expresion)==valorDeRealidad);
+    }
+    
     /* Todos los prints del test deben ser 'true' */
     public static void testValida(){
         System.out.println("\nTest Valida:");
@@ -203,17 +215,4 @@ public class Validacion {
         testValida("1+2+(.)",false);
         testValida("1+(2)",true);
     }
-    
-    public static void testValida(String expresion){
-        boolean valorDeRealidad;
-        valorDeRealidad=valida(expresion);
-        System.out.println("\nTest Valida:");
-        System.out.println(expresion);
-        System.out.println("expression Validity is: "+valorDeRealidad);
-    }
-    
-    public static void testValida(String expresion, boolean valorDeRealidad){
-        System.out.println(valida(expresion)==valorDeRealidad);
-    }
 }
-

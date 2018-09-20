@@ -96,12 +96,9 @@ public class Calcula {
         return resultado;
     }
     
-    /*public static PilaA<Object> inviertePila()*/
-    
     public static double calculaResultado(PilaA<Object> pila){
         
-        double resultado=0;
-        char operador;
+        double primerNumero=0, secundoNumero=0, resultado=0;
         Object obj;
         PilaA<Object> aux= new PilaA();
         while(!(pila.isEmpty())){
@@ -110,18 +107,22 @@ public class Calcula {
                 aux.push(obj);
             }
             else if(obj instanceof Character){
+                secundoNumero = (double)aux.pop();
+                primerNumero = (double)aux.pop();
                 switch ((char)obj){
                     case '+':
-                        resultado=(double)aux.pop()+(double)aux.pop();
+                        resultado = primerNumero+secundoNumero;
                         break;
                     case '-':
-                        resultado=(double)aux.pop()-(double)aux.pop();
+                        resultado = primerNumero-secundoNumero;
                         break;
                     case '*':
-                        resultado=(double)aux.pop()*(double)aux.pop();
+                        resultado = primerNumero*secundoNumero;
                         break;
-                    default:
-                        resultado=(double)aux.pop()/(double)aux.pop();
+                    case '/':
+                        if (secundoNumero == 0) {
+                        throw new ArithmeticException("No se puede divider por zero!!");}
+                        resultado = primerNumero/secundoNumero;
                         break;
             }
                 aux.push(resultado);
@@ -129,7 +130,6 @@ public class Calcula {
         }
         return resultado;
     }
-    
     
     public static void testConvierteAArrayList(String expresion){
         ArrayList <Object> arreglo;
@@ -166,6 +166,13 @@ public class Calcula {
         System.out.println("\ntestCalcula");
         System.out.println("expresion: "+expresion);
         System.out.println(calculaResultado(pila));
+    }
+    
+    public static void testCalcula(String expresion){
+        testConvierteAArrayList(expresion);
+        testTraduccionAPostfija(expresion);
+        testTraduccionAPilaA(expresion);
+        testCalculaResultado(expresion);
     }
 }
 
