@@ -173,35 +173,35 @@ public class Validacion {
     public static void testValida(){
         System.out.println("\nTest Valida:");
         /* ordenParentesis */
-        System.out.println(valida(")1+2(")==false);
-        System.out.println(valida("(1+2)")==true);
-        System.out.println(valida("((1+2)")==false);
-        System.out.println(valida("((1+2))")==true);
-        System.out.println(valida("(1+2))")==false);
+        testValida(")1+2(",false);
+        testValida("(1+2)",true);
+        testValida("((1+2)",false);
+        testValida("((1+2))",true);
+        testValida("(1+2))",false);
         /* noColindaParentesis */
-        System.out.println(valida("1+2+()")==false);
-        System.out.println(valida("(1+2)(1+2)")==false);
-        System.out.println(valida("(1+2)*(1+2)")==true);
-        System.out.println(valida("(1+2(1+2))")==false);
-        System.out.println(valida("((1+2)1+2)")==false);
+        testValida("1+2+()",false);
+        testValida("(1+2)(1+2)",false);
+        testValida("(1+2)*(1+2)",true);
+        testValida("(1+2(1+2))",false);
+        testValida("((1+2)1+2)",false);
         /* noColindaOperadoresParentesis */
-        System.out.println(valida("1++2")==false);
-        System.out.println(valida("(+1+2)")==false);
-        System.out.println(valida("(1+2+)")==false);
+        testValida("1++2",false);
+        testValida("(+1+2)",false);
+        testValida("(1+2+)",false);
         /* noOperadorPrincipioFinal */
-        System.out.println(valida("+1+2")==false);
-        System.out.println(valida("1+2+")==false);
+        testValida("+1+2",false);
+        testValida("1+2+",false);
         /* unPuntoPorNumero */
-        System.out.println(valida("1.2")==true);
-        System.out.println(valida(".12")==true);
-        System.out.println(valida("12.")==true);
-        System.out.println(valida(".1.2")==false);
-        System.out.println(valida("1+2..")==false);
-        System.out.println(valida("1+..2")==false);
+        testValida("1.2",true);
+        testValida(".12",true);
+        testValida("12.",true);
+        testValida(".1.2",false);
+        testValida("1+2..",false);
+        testValida("1+..2",false);
         /* noPuntoEntreOperadoresParentesis */
-        System.out.println(valida("1+.+2")==false);
-        System.out.println(valida("1+2+(.)")==false);
-        System.out.println(valida("1+(2)")==true);
+        testValida("1+.+2",false);
+        testValida("1+2+(.)",false);
+        testValida("1+(2)",true);
     }
     
     public static void testValida(String expresion){
@@ -209,7 +209,7 @@ public class Validacion {
         valorDeRealidad=valida(expresion);
         System.out.println("\nTest Valida:");
         System.out.println(expresion);
-        System.out.println("the expression is: "+valorDeRealidad);
+        System.out.println("expression Validity is: "+valorDeRealidad);
     }
     
     public static void testValida(String expresion, boolean valorDeRealidad){
