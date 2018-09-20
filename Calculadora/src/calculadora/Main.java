@@ -16,7 +16,7 @@ public class Main {
         /*
         Validacion.testValida("(1+1.1)+1");
         */
-        String expresion="(1+2)*(1-4)";
+        String expresion="1+1";
         Calcula.testConvierteAArrayList(expresion);
         Calcula.testTraduccionAPostfija(expresion);
         Calcula.testTraduccionAPilaA(expresion);
