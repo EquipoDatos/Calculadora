@@ -204,5 +204,17 @@ public class Validacion {
         System.out.println(valida("1+(2)")==true);
     }
     
+    public static void testValida(String expresion){
+        boolean valorDeRealidad;
+        valorDeRealidad=valida(expresion);
+        System.out.println("\nTest Valida:");
+        System.out.println(expresion);
+        System.out.println("the expression is: "+valorDeRealidad);
+    }
+    
+    public static void testValida(String expresion, boolean valorDeRealidad){
+        System.out.println(valida(expresion)==valorDeRealidad);
+    }
+    
 }
 

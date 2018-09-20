@@ -85,19 +85,18 @@ public class Calcula {
         return resultado;
     }
     
-        public static void testCalcula() {
+        public static void testCalcula(String expresion) {
             System.out.println("\nTest Calcula:");
-            String a, cadena;
-            a="((4.2+7)-8)+(7*2)";
+            String cadena;
             cadena = "";
-            ArrayList<Object> b, c;
-            b=convierteAArrayList(a);
-            c=traduccionAPostfija(b);
-            for(int i=0; i<c.size(); i++){
-                cadena += c.get(i);
+            ArrayList<Object> array, postfija;
+            array=convierteAArrayList(expresion);
+            postfija=traduccionAPostfija(array);
+            for(int i=0; i<postfija.size(); i++){
+                cadena += postfija.get(i);
                 cadena += " ";
             }
-            System.out.println(a);
+            System.out.println(expresion);
             System.out.println(cadena);
     } 
 }

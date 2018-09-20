@@ -12,8 +12,7 @@ package calculadora;
 public class Main {
     
     public static void main(String[] args) {
-        Validacion.testValida();
-        Calcula.testCalcula();
+        Validacion.testValida("1+1");
+        Calcula.testCalcula("((4.2+7)-8)+(7*2)");
     }
-    
 }
