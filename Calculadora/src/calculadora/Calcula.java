@@ -35,6 +35,7 @@ public class Calcula {
         return resp;
     }
     
+    
     public static ArrayList<Object> convierteAArrayList(String expresion){
        StringBuilder cadena = new StringBuilder();
        ArrayList<Object> resultado = new ArrayList();
@@ -168,6 +169,8 @@ public class Calcula {
         System.out.println(calculaResultado(pila));
     }
 }
+
+
     
 
 
