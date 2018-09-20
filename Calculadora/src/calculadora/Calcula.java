@@ -133,6 +133,35 @@ public class Calcula {
     }
     
     
+    public static void testConvierteAArrayList(String expresion){
+         ArrayList <Object> arreglo = new ArrayList();
+         arreglo = convierteAArrayList(expresion);
+         System.out.println("testconvierteAArrayList");
+         System.out.println(expresion);
+         for(int i=0; i<arreglo.size(); i++)
+            System.out.println(arreglo.get(i));
+    }    
+    
+    public static void testTraduccionAPostfija(String expresion){
+         ArrayList <Object> postfija = new ArrayList();
+         postfija=traduccionAPostfija(convierteAArrayList(expresion));
+         System.out.println("testTraduccionAPostfija");
+         System.out.println(expresion);
+    for(int i=0; i<postfija.size(); i++)
+            System.out.println(postfija.get(i));
+    }
+    
+    public static void testTraduccionAPilaA(String expresion){
+        PilaA<Object> pila = new PilaA();
+        pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(expresion)));
+        int n=pila.getTope();
+        System.out.println("testTraduccionAPilaA");
+        System.out.println(expresion);
+        for(int i=0; i<n; i++)
+            System.out.println(pila.pop());
+    }
+    
+    
        /* public static void testCalcula(String expresion) {
             System.out.println("\nTest Calcula:");
             String cadena;

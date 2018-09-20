@@ -5,8 +5,8 @@
  */
 package calculadora;
 
-import static calculadora.Calcula.convierteAArrayList;
-import java.util.ArrayList;
+import static calculadora.Calcula.testConvierteAArrayList;
+
 
 /**
  *
@@ -18,13 +18,9 @@ public class Main {
         /*
         Validacion.testValida("(1+1.1)+1");
         Calcula.testCalcula("(1+1)*3");
-*/
-        String expresion = "(1+1)*3";
-        ArrayList <Object> arreglo = new ArrayList();
-        ArrayList <Object> postfija = new ArrayList();
-        PilaA<Object> pila = new PilaA();
-        arreglo=convierteAArrayList(expresion);
-        postfija=traduccionAPostfija(arreglo);
-        pila = traduccionAPilaA(postfija);
-    
+        */
+        
+        testConvierteAArrayList("(1+2)*1-4");
+        
+        }
 }
