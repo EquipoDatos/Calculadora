@@ -5,7 +5,6 @@
  */
 package calculadora;
 
-import static calculadora.Calcula.*;
 
 /**
  *
@@ -17,10 +16,10 @@ public class Main {
         /*
         Validacion.testValida("(1+1.1)+1");
         */
-        String expresion="(1+2)+1";
-        testConvierteAArrayList(expresion);
-        testTraduccionAPostfija(expresion);
-        testTraduccionAPilaA(expresion);
-        testCalcula(expresion);
+        String expresion="(1+2)*(1-4)";
+        Calcula.testConvierteAArrayList(expresion);
+        Calcula.testTraduccionAPostfija(expresion);
+        Calcula.testTraduccionAPilaA(expresion);
+        Calcula.testCalcula(expresion);
         }
 }
