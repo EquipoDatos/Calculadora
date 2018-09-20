@@ -98,7 +98,7 @@ public class Calcula {
     
     /*public static PilaA<Object> inviertePila()*/
     
-    public static double calcula(PilaA<Object> pila){
+    public static double calculaResultado(PilaA<Object> pila){
         
         double resultado=0;
         char operador;
@@ -159,13 +159,13 @@ public class Calcula {
             System.out.println(pila.pop());
     }
     
-    public static void testCalcula(String expresion){
+    public static void testCalculaResultado(String expresion){
         PilaA<Object> pila;
         pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(expresion)));
         int n=pila.getTope();
         System.out.println("\ntestCalcula");
         System.out.println("expresion: "+expresion);
-        System.out.println(calcula(pila));
+        System.out.println(calculaResultado(pila));
     }
 }
     

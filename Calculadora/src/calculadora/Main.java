@@ -20,6 +20,6 @@ public class Main {
         Calcula.testConvierteAArrayList(expresion);
         Calcula.testTraduccionAPostfija(expresion);
         Calcula.testTraduccionAPilaA(expresion);
-        Calcula.testCalcula(expresion);
+        Calcula.testCalculaResultado(expresion);
         }
 }
