@@ -132,65 +132,41 @@ public class Calcula {
     
     
     public static void testConvierteAArrayList(String expresion){
-         ArrayList <Object> arreglo = new ArrayList();
-         arreglo = convierteAArrayList(expresion);
-         System.out.println("\ntestconvierteAArrayList");
-         System.out.println(expresion);
-         for(int i=0; i<arreglo.size(); i++)
-            System.out.println(arreglo.get(i));
+        ArrayList <Object> arreglo;
+        arreglo = convierteAArrayList(expresion);
+        System.out.println("\ntestconvierteAArrayList");
+        System.out.println("expresion: "+expresion);
+        for(int i=0; i<arreglo.size(); i++)
+           System.out.println(arreglo.get(i));
     }    
     
     public static void testTraduccionAPostfija(String expresion){
-         ArrayList <Object> postfija = new ArrayList();
-         postfija=traduccionAPostfija(convierteAArrayList(expresion));
-         System.out.println("\ntestTraduccionAPostfija");
-         System.out.println(expresion);
-    for(int i=0; i<postfija.size(); i++)
+        ArrayList <Object> postfija;
+        postfija=traduccionAPostfija(convierteAArrayList(expresion));
+        System.out.println("\ntestTraduccionAPostfija");
+        System.out.println("expresion: "+expresion);
+        for(int i=0; i<postfija.size(); i++)
             System.out.println(postfija.get(i));
     }
     
     public static void testTraduccionAPilaA(String expresion){
-        PilaA<Object> pila = new PilaA();
+        PilaA<Object> pila;
         pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(expresion)));
         int n=pila.getTope();
         System.out.println("\ntestTraduccionAPilaA");
-        System.out.println(expresion);
+        System.out.println("expresion: "+expresion);
         for(int i=0; i<=n; i++)
             System.out.println(pila.pop());
     }
     
     public static void testCalcula(String expresion){
-        PilaA<Object> pila = new PilaA();
+        PilaA<Object> pila;
         pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(expresion)));
         int n=pila.getTope();
         System.out.println("\ntestCalcula");
-        System.out.println(expresion);
+        System.out.println("expresion: "+expresion);
         System.out.println(calcula(pila));
     }
     
-    
-    public static void main(String[] args) {
-        /*
-        Validacion.testValida("(1+1.1)+1");
-        Calcula.testCalcula("(1+1)*3");
-*/
-        String expresion = "(1+1)*3.1+1";
-        ArrayList <Object> arreglo = new ArrayList();
-        ArrayList <Object> postfija = new ArrayList();
-        PilaA<Object> pila = new PilaA();
-        arreglo=convierteAArrayList(expresion);
-        System.out.println("Arreglo:"+"\n");
-        for(int i=0; i<arreglo.size(); i++)
-            System.out.println(arreglo.get(i));
-        postfija=traduccionAPostfija(arreglo);
-        System.out.println("Postfija:"+"\n");
-        for(int i=0; i<postfija.size(); i++)
-            System.out.println(postfija.get(i));
-        pila = traduccionAPilaA(postfija);
-        System.out.println("Pila:"+"\n");
-        int n=pila.getTope();
-           // System.out.println(pila.pop());
-        System.out.println(calcula(pila));
-    
-}
-}
+
+
