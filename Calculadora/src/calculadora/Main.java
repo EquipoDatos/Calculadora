@@ -5,8 +5,7 @@
  */
 package calculadora;
 
-import static calculadora.Calcula.testConvierteAArrayList;
-
+import static calculadora.Calcula.*;
 
 /**
  *
@@ -17,10 +16,11 @@ public class Main {
     public static void main(String[] args) {
         /*
         Validacion.testValida("(1+1.1)+1");
-        Calcula.testCalcula("(1+1)*3");
         */
-        
-        testConvierteAArrayList("(1+2)*1-4");
-        
+        String expresion="(1+2)+1";
+        testConvierteAArrayList(expresion);
+        testTraduccionAPostfija(expresion);
+        testTraduccionAPilaA(expresion);
+        testCalcula(expresion);
         }
 }

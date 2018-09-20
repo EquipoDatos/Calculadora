@@ -161,26 +161,16 @@ public class Calcula {
             System.out.println(pila.pop());
     }
     
+    public static void testCalcula(String expresion){
+        PilaA<Object> pila = new PilaA();
+        pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(expresion)));
+        int n=pila.getTope();
+        System.out.println("testCalcula");
+        System.out.println(expresion);
+        System.out.println(calcula(pila));
+    }
     
-       /* public static void testCalcula(String expresion) {
-            System.out.println("\nTest Calcula:");
-            String cadena;
-            PilaA<Object> pila;
-            cadena = "";
-            ArrayList<Object> array, postfija;
-            array=convierteAArrayList(expresion);
-            postfija=traduccionAPostfija(array);
-            pila=traduccionAPilaA(postfija);
-            for(int i=0; i<=pila.getTope(); i++){
-                cadena += pila.pop();
-                cadena += " ";
-            }
-            System.out.println(expresion);
-            System.out.println(cadena);
-            System.out.println(calcula(pila));
-            System.out.println(calcula(traduccionAPilaA(traduccionAPostfija(convierteAArrayList(expresion)))));
-    } 
-        */
+    
     public static void main(String[] args) {
         /*
         Validacion.testValida("(1+1.1)+1");
