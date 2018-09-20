@@ -5,6 +5,9 @@
  */
 package calculadora;
 
+import static calculadora.Calcula.convierteAArrayList;
+import java.util.ArrayList;
+
 /**
  *
  * @author marcopalermo
@@ -12,7 +15,16 @@ package calculadora;
 public class Main {
     
     public static void main(String[] args) {
+        /*
         Validacion.testValida("(1+1.1)+1");
-        Calcula.testCalcula("((4.6+7)-8)+(7*2)");
-    }
+        Calcula.testCalcula("(1+1)*3");
+*/
+        String expresion = "(1+1)*3";
+        ArrayList <Object> arreglo = new ArrayList();
+        ArrayList <Object> postfija = new ArrayList();
+        PilaA<Object> pila = new PilaA();
+        arreglo=convierteAArrayList(expresion);
+        postfija=traduccionAPostfija(arreglo);
+        pila = traduccionAPilaA(postfija);
+    
 }

@@ -25,6 +25,14 @@ public class PilaA<T> implements PilaADT<T> {
         pila=(T[])new Object[max];
         tope=-1;
     }
+
+    public T[] getPila() {
+        return pila;
+    }
+
+    public int getTope() {
+        return tope;
+    }
     
     @Override
     public boolean isEmpty(){
