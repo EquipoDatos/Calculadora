@@ -8,7 +8,7 @@ package calculadora;
  *
  * @author alberto
  */
-public class Validacion {
+public class Valida {
     
     public static boolean esNumero(char e){
         boolean resp = false;

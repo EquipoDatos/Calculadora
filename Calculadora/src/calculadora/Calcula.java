@@ -41,12 +41,12 @@ public class Calcula {
        char c;
        for(int i=0; i<expresion.length(); i++){
            c=expresion.charAt(i);
-           if(!(cadena.toString().isEmpty()) && !Validacion.esNumero(c)){
+           if(!(cadena.toString().isEmpty()) && !Valida.esNumero(c)){
                resultado.add(Double.valueOf(cadena.toString()));
                resultado.add(c);
                cadena= new StringBuilder();
            }
-           else if((cadena.toString().isEmpty()) && !Validacion.esNumero(c)){
+           else if((cadena.toString().isEmpty()) && !Valida.esNumero(c)){
                resultado.add(c);
            }
            else
