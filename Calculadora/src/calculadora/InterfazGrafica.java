@@ -50,7 +50,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         minusButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         pointButton = new javax.swing.JButton();
-        openParantesisButton = new javax.swing.JButton();
+        openParentesisButton = new javax.swing.JButton();
         closeParentesisButton = new javax.swing.JButton();
         negativeButton = new javax.swing.JButton();
         equalsButton = new javax.swing.JButton();
@@ -223,13 +223,13 @@ public class InterfazGrafica extends javax.swing.JFrame {
             }
         });
 
-        openParantesisButton.setBackground(new java.awt.Color(102, 153, 204));
-        openParantesisButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        openParantesisButton.setForeground(new java.awt.Color(20, 38, 130));
-        openParantesisButton.setText("(");
-        openParantesisButton.addActionListener(new java.awt.event.ActionListener() {
+        openParentesisButton.setBackground(new java.awt.Color(102, 153, 204));
+        openParentesisButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        openParentesisButton.setForeground(new java.awt.Color(20, 38, 130));
+        openParentesisButton.setText("(");
+        openParentesisButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openParantesisButtonActionPerformed(evt);
+                openParentesisButtonActionPerformed(evt);
             }
         });
 
@@ -310,7 +310,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(offButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(openParantesisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(openParentesisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pointButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,8 +335,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(equalsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(equalsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -349,7 +348,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(offButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(openParantesisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(openParentesisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(closeParentesisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(negativeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,20 +386,30 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private StringBuilder sb = new StringBuilder();
+    private boolean ans = false;
+    private int lenAns;
+    
+    private void setText(){
+        if (ans){
+            jTextField1.setText("Ans"+sb.substring(lenAns).toString());
+        }
+        else
+            jTextField1.setText(sb.toString());
+    }
         
-    private void openParantesisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openParantesisButtonActionPerformed
+    private void openParentesisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openParentesisButtonActionPerformed
         sb.append("(");
-        jTextField1.setText(sb.toString());
-    }//GEN-LAST:event_openParantesisButtonActionPerformed
+        setText();
+    }//GEN-LAST:event_openParentesisButtonActionPerformed
 
     private void closeParentesisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeParentesisButtonActionPerformed
         sb.append(")");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_closeParentesisButtonActionPerformed
 
     private void negativeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_negativeButtonActionPerformed
         sb.append("~");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_negativeButtonActionPerformed
 
     private void offButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offButtonActionPerformed
@@ -409,83 +418,84 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     private void zeroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroButtonActionPerformed
         sb.append("0");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_zeroButtonActionPerformed
 
     private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
         sb.append("1");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_oneButtonActionPerformed
 
     private void twoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoButtonActionPerformed
         sb.append("2");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_twoButtonActionPerformed
 
     private void threeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeButtonActionPerformed
         sb.append("3");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_threeButtonActionPerformed
 
     private void fourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourButtonActionPerformed
         sb.append("4");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_fourButtonActionPerformed
 
     private void fiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveButtonActionPerformed
         sb.append("5");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_fiveButtonActionPerformed
 
     private void sixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixButtonActionPerformed
         sb.append("6");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_sixButtonActionPerformed
 
     private void sevenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenButtonActionPerformed
         sb.append("7");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_sevenButtonActionPerformed
 
     private void eightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightButtonActionPerformed
         sb.append("8");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_eightButtonActionPerformed
 
     private void nineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineButtonActionPerformed
         sb.append("9");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_nineButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         sb.append("+");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void minusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusButtonActionPerformed
         sb.append("-");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_minusButtonActionPerformed
 
     private void multButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multButtonActionPerformed
         sb.append("*");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_multButtonActionPerformed
 
     private void divButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divButtonActionPerformed
         sb.append("/");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_divButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         if(sb.length() > 0)
             sb.deleteCharAt(sb.length()-1);
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        ans=false;
         sb.delete(0, sb.length());
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void equalsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsButtonActionPerformed
@@ -493,20 +503,25 @@ public class InterfazGrafica extends javax.swing.JFrame {
             PilaA<Object> pila;
             pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(sb.toString())));
             double resultado = calculaResultado(pila);
-            if (resultado-(int)resultado==0)
+            sb.delete(0, sb.length());
+            sb.append(resultado);
+            ans=true;
+            lenAns=String.valueOf(resultado).length();
+            if (resultado-(int)resultado==0){
                 jTextField1.setText(String.valueOf((int)(resultado)));
+            }
             else
                 jTextField1.setText(String.valueOf(resultado));
         }
         else
-            jTextField1.setText("Syntax Error");
-         sb.delete(0, sb.length());
+            jTextField1.setText("Syntax Error"); 
     }//GEN-LAST:event_equalsButtonActionPerformed
 
     private void pointButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointButtonActionPerformed
         sb.append(".");
-        jTextField1.setText(sb.toString());
+        setText();
     }//GEN-LAST:event_pointButtonActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -561,7 +576,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private javax.swing.JButton nineButton;
     private javax.swing.JButton offButton;
     private javax.swing.JButton oneButton;
-    private javax.swing.JButton openParantesisButton;
+    private javax.swing.JButton openParentesisButton;
     private javax.swing.JButton pointButton;
     private javax.swing.JButton sevenButton;
     private javax.swing.JButton sixButton;
