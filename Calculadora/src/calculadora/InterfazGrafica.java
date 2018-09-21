@@ -492,7 +492,11 @@ public class InterfazGrafica extends javax.swing.JFrame {
         if(Validacion.valida(sb.toString())){
             PilaA<Object> pila;
             pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(sb.toString())));
-            jTextField1.setText(String.valueOf(calculaResultado(pila)));
+            double resultado = calculaResultado(pila);
+            if (resultado-(int)resultado==0)
+                jTextField1.setText(String.valueOf((int)(resultado)));
+            else
+                jTextField1.setText(String.valueOf(resultado));
         }
         else
             jTextField1.setText("Syntax Error");

@@ -120,8 +120,8 @@ public class Calcula {
                         resultado = primerNumero*secundoNumero;
                         break;
                     case '/':
-                        if (secundoNumero == 0) {
-                        throw new ArithmeticException("No se puede divider por zero!!");}
+                        if (secundoNumero == 0) 
+                            throw new ArithmeticException("No se puede divider por zero!!");
                         resultado = primerNumero/secundoNumero;
                         break;
             }
