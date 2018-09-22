@@ -84,14 +84,14 @@ public class Valida {
         while(!"".equals(expresion)){
             b = expresion.charAt(0);
             expresion = expresion.substring(1, expresion.length());
-            if (par==true && !(esNumero(b))){
-                pila.push(')');
-                pila.push(b);
-                par=false;
-            }
             if (pila.isEmpty() && esNegativo(b)){
                 pila.push('0');
                 pila.push('-');
+            }
+            else if (par==true && !(esNumero(b))){
+                pila.push(')');
+                pila.push(b);
+                par=false;
             }
             else if (!pila.isEmpty() && (char)pila.peek()=='(' && esNegativo(b)){
                 pila.push('0');
