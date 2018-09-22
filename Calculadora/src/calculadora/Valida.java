@@ -212,12 +212,25 @@ public class Valida {
     return resp;
         }
     
+    public static boolean validaNegativo(String expresion){
+        boolean resp=true;
+        char a;
+        int i=0;
+        while(i<expresion.length() && resp){
+            a=expresion.charAt(i);
+            if (esNegativo(a))
+                    resp=false;
+             i++;
+            }
+        return resp;
+    }
+    
     public static boolean validaDecimales(String expresion){
         return unPuntoPorNumero(expresion) && noPuntoEntreOperadoresParentesis(expresion);
     }
     
     public static boolean valida(String expresion){
-        return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion);
+        return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion) && validaNegativo(expresion);
     }
     
     public static void testValida(String expresion){
