@@ -230,6 +230,7 @@ public class Valida {
     }
     
     public static boolean valida(String expresion){
+        expresion=fixNegativo(expresion);
         return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion) && validaNegativo(expresion);
     }
     
