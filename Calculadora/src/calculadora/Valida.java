@@ -42,6 +42,19 @@ public class Valida {
         return resp;
     }
     
+    public static boolean esPosNeg(char e){
+        boolean resp = false;
+        char[] set = {'+','-','∼'};
+        int i = 0;
+        while( resp == false && i<set.length){
+            if(set[i] == e)
+                resp = true;
+            i++;
+        }
+        return resp;
+    }
+    
+    
     public static boolean ordenParentesis(String expresion){
         boolean resp = true;
         PilaA<Character> pila = new PilaA();
@@ -65,6 +78,33 @@ public class Valida {
         if (!(pila.isEmpty()))
                 resp = false;
         return resp;
+    }
+    
+    public static String fixNegativo(String expresion){
+        int i=0, n=expresion.length();
+        char b;
+        PilaA pila = new PilaA();
+        PilaA pila2 = new PilaA();
+        while(!"".equals(expresion)){
+            b = expresion.charAt(0);
+            expresion = expresion.substring(1, expresion.length());
+            if (pila.isEmpty() && esPosNeg(b)){
+                pila.push('0');
+                pila.push(b);
+            }
+            else if (!pila.isEmpty() && (char)pila.peek()=='(' && esPosNeg(b)){
+                pila.push('0');
+                pila.push(b);
+            }
+            else
+                pila.push(b);
+        }
+        while(!(pila.isEmpty()))
+            pila2.push(pila.pop());
+        StringBuilder cadena = new StringBuilder();
+        while(!(pila2.isEmpty()))
+            cadena.append(pila2.pop());
+        return cadena.toString();
     }
     
     public static boolean noColindaParentesis(String expresion){
@@ -98,7 +138,7 @@ public class Valida {
             b=expresion.charAt(i);
             if(esOperador(a) && (b==')' || esOperador(b)))
                 resp=false;
-            if(a=='(' && esOperador(b))
+            if(a=='(' && (b=='*'||b=='/'))
                 resp=false;
             i++;
         }
@@ -112,7 +152,9 @@ public class Valida {
         boolean resp=true;
         while(i<expresion.length() && resp){
             a=expresion.charAt(i);
-            if(esOperador(a) && (i==0 || i==n-1))
+            if( (a=='*' || a=='/') && i==0)
+                resp=false;
+            if((esOperador(a)||a=='∼') && i==n-1)
                 resp=false;
             i++;
         }
@@ -198,10 +240,10 @@ public class Valida {
         testValida("((1+2)1+2)",false);
         /* noColindaOperadoresParentesis */
         testValida("1++2",false);
-        testValida("(+1+2)",false);
+        testValida("(/1+2)",false);
         testValida("(1+2+)",false);
         /* noOperadorPrincipioFinal */
-        testValida("+1+2",false);
+        testValida("/1+2",false);
         testValida("1+2+",false);
         /* unPuntoPorNumero */
         testValida("1.2",true);

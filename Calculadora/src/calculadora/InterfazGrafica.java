@@ -501,7 +501,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     private void equalsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsButtonActionPerformed
         if(Valida.valida(sb.toString())){
             PilaA<Object> pila;
-            pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(sb.toString())));
+            pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(Valida.fixNegativo(sb.toString()))));
             double resultado = calculaResultado(pila);
             sb.delete(0, sb.length());
             sb.append(resultado);
