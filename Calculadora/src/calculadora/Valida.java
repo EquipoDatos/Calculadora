@@ -42,15 +42,10 @@ public class Valida {
         return resp;
     }
     
-    public static boolean esPosNeg(char e){
+    public static boolean esNegativo(char e){
         boolean resp = false;
-        char[] set = {'+','-','∼'};
-        int i = 0;
-        while( resp == false && i<set.length){
-            if(set[i] == e)
-                resp = true;
-            i++;
-        }
+        if (e =='~')
+            resp = true;
         return resp;
     }
     
@@ -82,23 +77,37 @@ public class Valida {
     
     public static String fixNegativo(String expresion){
         int i=0, n=expresion.length();
+        boolean par=false;
         char b;
         PilaA pila = new PilaA();
         PilaA pila2 = new PilaA();
         while(!"".equals(expresion)){
             b = expresion.charAt(0);
             expresion = expresion.substring(1, expresion.length());
-            if (pila.isEmpty() && esPosNeg(b)){
-                pila.push('0');
+            if (par==true && !(esNumero(b))){
+                pila.push(')');
                 pila.push(b);
+                par=false;
             }
-            else if (!pila.isEmpty() && (char)pila.peek()=='(' && esPosNeg(b)){
+            if (pila.isEmpty() && esNegativo(b)){
                 pila.push('0');
-                pila.push(b);
+                pila.push('-');
+            }
+            else if (!pila.isEmpty() && (char)pila.peek()=='(' && esNegativo(b)){
+                pila.push('0');
+                pila.push('-');
+            }
+            else if (!pila.isEmpty() && esOperador((char)pila.peek()) && esNegativo(b)){
+                pila.push('(');
+                pila.push('0');
+                pila.push('-');
+                par=true;
             }
             else
                 pila.push(b);
         }
+        if (par)
+            pila.push(')');
         while(!(pila.isEmpty()))
             pila2.push(pila.pop());
         StringBuilder cadena = new StringBuilder();
@@ -138,7 +147,7 @@ public class Valida {
             b=expresion.charAt(i);
             if(esOperador(a) && (b==')' || esOperador(b)))
                 resp=false;
-            if(a=='(' && (b=='*'||b=='/'))
+            if(a=='(' && esOperador(a))
                 resp=false;
             i++;
         }
@@ -152,9 +161,9 @@ public class Valida {
         boolean resp=true;
         while(i<expresion.length() && resp){
             a=expresion.charAt(i);
-            if( (a=='*' || a=='/') && i==0)
+            if( esOperador(a) && i==0)
                 resp=false;
-            if((esOperador(a)||a=='∼') && i==n-1)
+            if((esOperador(a)||a=='~') && i==n-1)
                 resp=false;
             i++;
         }

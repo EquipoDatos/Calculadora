@@ -504,17 +504,24 @@ public class InterfazGrafica extends javax.swing.JFrame {
             pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(Valida.fixNegativo(sb.toString()))));
             double resultado = calculaResultado(pila);
             sb.delete(0, sb.length());
-            sb.append(resultado);
+            if (resultado>=0)
+                sb.append(resultado);
+            else{
+                sb.append(0);
+                sb.append(resultado);
+            }
             ans=true;
-            lenAns=String.valueOf(resultado).length();
+            lenAns=sb.length();
             if (resultado-(int)resultado==0){
                 jTextField1.setText(String.valueOf((int)(resultado)));
             }
             else
                 jTextField1.setText(String.valueOf(resultado));
         }
-        else
+        else{
             jTextField1.setText("Syntax Error"); 
+            sb.delete(0, sb.length());
+        }
     }//GEN-LAST:event_equalsButtonActionPerformed
 
     private void pointButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pointButtonActionPerformed

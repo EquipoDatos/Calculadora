@@ -17,7 +17,7 @@ public class Main {
      */
         public static void main(String[] args) {
             
-            Valida.testValida();
+            System.out.println(Valida.fixNegativo("~1+~3"));
         
         }
     
