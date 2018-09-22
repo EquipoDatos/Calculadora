@@ -222,7 +222,7 @@ public class Valida {
                     resp=false;
              i++;
             }
-        return resp;
+        return resp; 
     }
     
     public static boolean validaDecimales(String expresion){
@@ -263,10 +263,10 @@ public class Valida {
         testValida("((1+2)1+2)",false);
         /* noColindaOperadoresParentesis */
         testValida("1++2",false);
-        testValida("(/1+2)",false);
+        testValida("(+1+2)",false);
         testValida("(1+2+)",false);
         /* noOperadorPrincipioFinal */
-        testValida("/1+2",false);
+        testValida("+1+2",false);
         testValida("1+2+",false);
         /* unPuntoPorNumero */
         testValida("1.2",true);

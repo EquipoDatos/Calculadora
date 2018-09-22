@@ -246,7 +246,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         negativeButton.setBackground(new java.awt.Color(102, 153, 204));
         negativeButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         negativeButton.setForeground(new java.awt.Color(20, 38, 130));
-        negativeButton.setText("+ / -");
+        negativeButton.setText("(-)");
         negativeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 negativeButtonActionPerformed(evt);
@@ -257,6 +257,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         equalsButton.setFont(new java.awt.Font("Perpetua Titling MT", 0, 20)); // NOI18N
         equalsButton.setForeground(new java.awt.Color(20, 38, 130));
         equalsButton.setText("=");
+
         equalsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 equalsButtonActionPerformed(evt);
@@ -531,7 +532,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
 
     
     /**
-     * @param args the command line arguments
+     * @Parem args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
