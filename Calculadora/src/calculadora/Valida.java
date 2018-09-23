@@ -248,7 +248,7 @@ public class Valida {
             b=expresion.charAt(i);
             if(esOperador(a) && (b==')' || esOperador(b)))
                 resp=false;
-            if(a=='(' && esOperador(a))
+            if(a=='(' && esOperador(b))
                 resp=false;
             i++;
         }
