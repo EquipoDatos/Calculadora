@@ -6,8 +6,19 @@
 package calculadora;
 
 /**
+ * <pre>
+ * Clase de Excepción
+ * 
+ * Unicamente sirve para expresar un error en caso de ser encontrado.
+ * 
  *
- * @author alberto
+ * @author Alberto Harari
+ * @author Abraham Attie
+ * @author David Ramos
+ * @author Marco 
+ * @author Patricio Falcon
+ * 
+ * </pre>
  */
 public class EmptyCollectionException extends RuntimeException {
     

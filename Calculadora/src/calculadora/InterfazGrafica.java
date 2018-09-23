@@ -11,8 +11,20 @@ import static calculadora.Calcula.traduccionAPilaA;
 import static calculadora.Calcula.traduccionAPostfija;
 
 /**
+ * <pre>
+ * Clase InterfazGráfica
+ * 
+ * Se encuentra el diseño y la creación de la calculadora de manera gráfica.
+ * Se le atribuyen acciones a ciertos botones de la calculadora por medio de los metodos de las clases Valida y Calcula. 
+ * 
  *
- * @author david
+ * @author Alberto Harari
+ * @author Abraham Attie
+ * @author David Ramos
+ * @author Marco Palermo
+ * @author Patricio Falcon
+ * 
+ * </pre>
  */
 public class InterfazGrafica extends javax.swing.JFrame {
 
@@ -528,9 +540,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
     }//GEN-LAST:event_pointButtonActionPerformed
 
     
-    /**
-     * @Parem args the command line arguments
-     */
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

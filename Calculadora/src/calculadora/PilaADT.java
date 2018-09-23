@@ -6,8 +6,19 @@
 package calculadora;
 
 /**
+ * <pre>
+ *  Interfaz PilaADT
+ *  Indica a la clase PilaA a tener ciertas funcionalidades y métodos. 
+ * 
+ * 
  *
- * @author alberto
+ * @author Alberto Harari
+ * @author Abraham Attie
+ * @author David Ramos
+ * @author Marco Palermo
+ * @author Patricio Falcon
+ * 
+ * </pre>
  */
 public interface PilaADT <T>{
     public void push(T dato);

@@ -5,8 +5,23 @@
  */
 package calculadora;
 /**
+ * <pre>
+ * Clase Valida
+ * 
+ * Sirve para validar la expresión o cadena que el usuario escribe en la calculadora.
+ * Se implementan varios métodos que revisan y validan la cadena carácter por carácter.
+ * Comprueba la grámatica y el orden de las cadenas que escribe el usuario para luego llevar a cabo los metodos de la Clase Calcula 
+ * 
+ * 
+ * 
  *
- * @author alberto
+ * @author Alberto Harari
+ * @author Abraham Attie
+ * @author David Ramos
+ * @author Marco Palermo
+ * @author Patricio Falcon
+ * 
+ * </pre>
  */
 public class Valida {
     

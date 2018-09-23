@@ -7,10 +7,31 @@ package calculadora;
 
 import java.util.ArrayList;
 /**
+ * <pre>
+ * Clase Calcula
+ *  Esta clase contiene todos los metodos que lleva acabo la calculadora.
+ * 
  *
- * @author alberto
+ * @author Alberto Harari
+ * @author Abraham Attie
+ * @author David Ramos
+ * @author Marco 
+ * @author Patricio Falcon
+ * 
+ * </pre>
  */
+
 public class Calcula {
+    /**
+     * <pre>
+     *
+     * Indica la prioridad de un Operador ya sea +, - , *, /
+     * Le da cierta jerarquia a los operadores para poder compararlos y que en otro metodo la calculadora sepa que operadores llevar a cabo primero. 
+     * @param c recibe un Operador 
+     * @return regresa un entero del 1 al 3 que indica la prioridad del Operador
+     * 
+     * </pre>
+     */
     
     public static int indicaPrioridad(char c){
         int resp=0;
@@ -34,7 +55,18 @@ public class Calcula {
         }
         return resp;
     }
-    
+    /**
+     * <pre>
+     * Convierte el String que el usuario escribe en la calculadora, a un ArrayList
+     * Utiliza un for que revisa caracter por caracter de la cadena, cunado encuentra un operador automaticamente guarda en una casilla lo que lleva el StringBuilder, y en otra casilla guarda el operador. Limpia el StringBuilder y reinicia el proceso. 
+     * Se creo para ordenar la cadena y trabajarla de una manera más sencilla.
+     * 
+  
+     * Agrega el String por orden de izquierda a derecha. 
+     * @param expresion:  es la cadena de Operandos, Operadores y puntos que el usuario escribe en la calculadora
+     * @return un ArrayList en la cual en cada casilla contiene un numero double o un operador. 
+     * </pre>
+     */
     public static ArrayList<Object> convierteAArrayList(String expresion){
        StringBuilder cadena = new StringBuilder();
        ArrayList<Object> resultado = new ArrayList();
@@ -57,6 +89,18 @@ public class Calcula {
        return resultado;
        }
     
+    /**
+     * <pre>
+     * Este metodo únicamente convierte de infijo a postfijo
+     * Analiza cada casilla del ArrayList que recibe cuando encuentra un Operador o un Parentesis aplica metodos para ordenar a postfijo
+     * @param array recibe el ArrayList del metodo convierteAArrayList
+     * @see convierteAArrayList tfijo
+     * @see indicaPrioridad
+     * 
+     * 
+     * @return regresa el ArrayList de los valores ya acomodados de la forma postfijo. 
+     * </pre>
+     */
     public static ArrayList<Object> traduccionAPostfija(ArrayList<Object> array){
         ArrayList<Object> resultado = new ArrayList();
         PilaA<Character> pila= new PilaA();
