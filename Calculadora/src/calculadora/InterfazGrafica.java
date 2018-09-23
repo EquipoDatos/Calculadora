@@ -258,7 +258,7 @@ public class InterfazGrafica extends javax.swing.JFrame {
         negativeButton.setBackground(new java.awt.Color(102, 153, 204));
         negativeButton.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         negativeButton.setForeground(new java.awt.Color(20, 38, 130));
-        negativeButton.setText("(-)");
+        negativeButton.setText("+/-");
         negativeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 negativeButtonActionPerformed(evt);
@@ -512,7 +512,8 @@ public class InterfazGrafica extends javax.swing.JFrame {
         if(Valida.valida(sb.toString()) && (!ans || Valida.esOperador(sb.toString().charAt(lenAns)))){
             PilaA<Object> pila;
             pila = traduccionAPilaA(traduccionAPostfija(convierteAArrayList(Valida.fixNegativo(sb.toString()))));
-            double resultado = calculaResultado(pila);
+            double resultado;
+            resultado = calculaResultado(pila);
             sb.delete(0, sb.length());
             if (resultado>=0)
                 sb.append(resultado);

@@ -247,7 +247,7 @@ public class Valida {
             b=expresion.charAt(i);
             if(esOperador(a) && (b==')' || esOperador(b)))
                 resp=false;
-            if(a=='(' && esOperador(a))
+            if(a=='(' && esOperador(b))
                 resp=false;
             i++;
         }
@@ -344,6 +344,7 @@ public class Valida {
         return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion) && validaNegativo(expresion);
     }
     
+    /* Utilizado para pruebas
     public static void testValida(String expresion){
         boolean valorDeRealidad;
         valorDeRealidad=valida(expresion);
@@ -356,38 +357,38 @@ public class Valida {
         System.out.println(valida(expresion)==valorDeRealidad);
     }
     
-    /* Todos los prints del test deben ser 'true' */
+    // Todos los prints del test deben ser 'true' 
     public static void testValida(){
         System.out.println("\nTest Valida:");
-        /* ordenParentesis */
+        // ordenParentesis 
         testValida(")1+2(",false);
         testValida("(1+2)",true);
         testValida("((1+2)",false);
         testValida("((1+2))",true);
         testValida("(1+2))",false);
-        /* noColindaParentesis */
+        // noColindaParentesis 
         testValida("1+2+()",false);
         testValida("(1+2)(1+2)",false);
         testValida("(1+2)*(1+2)",true);
         testValida("(1+2(1+2))",false);
         testValida("((1+2)1+2)",false);
-        /* noColindaOperadoresParentesis */
+        // noColindaOperadoresParentesis 
         testValida("1++2",false);
-        testValida("(+1+2)",false);
+        testValida("(/1+2)",false);
         testValida("(1+2+)",false);
-        /* noOperadorPrincipioFinal */
+        // noOperadorPrincipioFinal 
         testValida("+1+2",false);
         testValida("1+2+",false);
-        /* unPuntoPorNumero */
+        // unPuntoPorNumero 
         testValida("1.2",true);
         testValida(".12",true);
         testValida("12.",true);
         testValida(".1.2",false);
         testValida("1+2..",false);
         testValida("1+..2",false);
-        /* noPuntoEntreOperadoresParentesis */
+        // noPuntoEntreOperadoresParentesis 
         testValida("1+.+2",false);
         testValida("1+2+(.)",false);
         testValida("1+(2)",true);
-    }
+    }*/
 }
