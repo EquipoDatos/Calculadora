@@ -154,32 +154,33 @@ public class Calcula {
      */
     public static double calculaResultado(PilaA<Object> pila){
         
-        double primerNumero=0, secundoNumero=0, resultado=0;
+        double primerNumero=0, segundoNumero=0, resultado=0;
         Object obj;
         PilaA<Object> aux= new PilaA();
         while(!(pila.isEmpty())){
             obj=pila.pop();
             if (obj instanceof Double){
                 aux.push(obj);
+                resultado=(double)obj;
             }
             else if(obj instanceof Character){
-                secundoNumero = (double)aux.pop();
+                segundoNumero = (double)aux.pop();
                 primerNumero = (double)aux.pop();
                 switch ((char)obj){
                     case '+':
-                        resultado = primerNumero+secundoNumero;
+                        resultado = primerNumero+segundoNumero;
                         break;
                     case '-':
-                        resultado = primerNumero-secundoNumero;
+                        resultado = primerNumero-segundoNumero;
                         break;
                     case '*':
-                        resultado = primerNumero*secundoNumero;
+                        resultado = primerNumero*segundoNumero;
                         break;
                     case '/':
-                        if (secundoNumero == 0) {
+                        if (segundoNumero == 0) {
                             System.out.println("DIVISION BY ZERO!!");
                             throw new ArithmeticException("No se puede divider por zero!!");}
-                        resultado = primerNumero/secundoNumero;
+                        resultado = primerNumero/segundoNumero;
                         break;
             }
                 aux.push(resultado);
@@ -187,7 +188,7 @@ public class Calcula {
         }
         return resultado;
     }
-    
+    /* Utilizado para pruebas
     public static void testConvierteAArrayList(String expresion){
         ArrayList <Object> arreglo;
         arreglo = convierteAArrayList(expresion);
@@ -230,7 +231,7 @@ public class Calcula {
         testTraduccionAPostfija(expresion);
         testTraduccionAPilaA(expresion);
         testCalculaResultado(expresion);
-    }
+    }*/
 }
 
 
