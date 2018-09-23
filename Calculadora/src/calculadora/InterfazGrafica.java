@@ -18,11 +18,11 @@ import static calculadora.Calcula.traduccionAPostfija;
  * Se le atribuyen acciones a ciertos botones de la calculadora por medio de los metodos de las clases Valida y Calcula. 
  * 
  *
- * @author Alberto Harari
+ * @author Alberto Jafif
  * @author Abraham Attie
  * @author David Ramos
  * @author Marco Palermo
- * @author Patricio Falcon
+ * @author Patricio Falcón
  * 
  * </pre>
  */

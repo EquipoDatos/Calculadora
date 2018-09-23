@@ -8,7 +8,7 @@ package calculadora;
  * <pre>
  * Clase Valida
  * 
- * Sirve para validar que la expresión o cadena que el usuario escribe en la calculadora sea correcta.
+ * Contiene las validaciones previas al cálculo de la expresión
  * Se implementan varios métodos que revisan y validan la cadena char por char.
  * Considera los paréntesis, operadores y números (con sus decimales).
  *  
@@ -26,14 +26,13 @@ package calculadora;
  */
 public class Valida {
     /**
-    
+    * Revisa si un char es dígito o punto decimal
      * @param e Un char de la expresión
      * @return <ul>
      *  <li> true: si el char es un dígito o punto decimal </li>
      *  <li> false: si el char no es un dígito o punto decimal  </li>
      * </ul>
      */
-    
     public static boolean esNumero(char e){
         boolean resp = false;
         if ((e>='0' && e<='9') || (e=='.')) {
@@ -43,7 +42,7 @@ public class Valida {
     }
     
     /**
-    
+     * Revisa si un char es operador
      * @param e Un char de la expresión
      * @return <ul>
      *  <li> true: si el char es un operador </li>
@@ -63,7 +62,7 @@ public class Valida {
     }
     
     /**
-    
+    * Revisa si un char es paréntesis
      * @param e Un char de la expresión
      * @return <ul>
      *  <li> true: si el char es un paréntesis que abre o cierra </li>
@@ -83,7 +82,7 @@ public class Valida {
     }
     
     /**
-    
+     * Revisa si un char es símbolo negativo
      * @param e Un char de la expresión
      * @return <ul>
      *  <li> true: si el char es un símbolo negativo </li>
@@ -98,8 +97,10 @@ public class Valida {
     }
     
     /**
-     * Método que valida el orden y cantidad de los paréntesis
-     * 
+     * <pre>
+     * Valida el orden y cantidad de los paréntesis
+     * Ej. false: ((9+8) ó 9+8) ó )9+8)
+     * </pre>
      * @param expresion La expresión ingresada en la calculadora
      * @return <ul>
      *  <li> true: si el orden de los paréntesis es válido y correcto </li>
@@ -132,8 +133,7 @@ public class Valida {
     }
     
     /**
-     * Método que al ubicar ~ convierte un número o expresión en parénteis a negativo
-    
+     * Al ubicar ~ convierte un número o expresión en parénteis a negativo
      * @param expresion La expresión ingresada en la calculadora
      * @return String de la expresión con números negativos
      */
@@ -179,16 +179,18 @@ public class Valida {
     }
     
     /**
-     * Método que valida que sólo haya un operador colindando con un paréntesis
-     * que abre o cierra.
-     * 
+     * <pre>
+     * Valida que sólo haya un operador colindando con un paréntesis
+     * que abre o cierra
      * Ej. true: 9+(  ó  )-8
      * Ej. false: 9( ó   )8
+     * </pre>
      * @param expresion La expresión ingresada en la calculadora
      * @return <ul>
-     *  <li> true: si la sintáxis de los paréntesis es correcta </li>
-     *  <li> false: si la sintáxis de los paréntesis es incorrecta</li>
+     *  <li> true: si no hay error de colindancia </li>
+     *  <li> false: si hay error de colindancia</li>
      * </ul>
+     * 
      */
     public static boolean noColindaParentesis(String expresion){
             char a, b;
@@ -209,16 +211,14 @@ public class Valida {
         }
     
     /**
-     * Método que implementa tanto 
-     * @see noColindaParentesis 
-     * como
-     * @see ordenParentesis
-     * 
+     * Implementa tanto noColindaParentesis como ordenParentesis
      * @param expresion La expresión ingresada en la calculadora
      * @return <ul>
      *  <li> true: si los paréntesis son correctos en su totalidad </li>
      *  <li> false: si los paréntesis son incorrectos </li>
      * </ul>
+     * @see noColindaParentesis
+     * @see ordenParentesis
      */
     
     public static boolean validaParentesis(String expresion){
@@ -227,15 +227,16 @@ public class Valida {
     
     
     /**
-     * Método que valida la colindancia de paréntesis y operadores, y que no 
+     * <pre>
+     * Valida la colindancia de paréntesis y operadores, y que no 
      * hayan dos o más operadores juntos.
      * Ej. true: (9+8)
      * Ej. false: (+9+8) o (9++8)
-     * 
+     * </pre>
      * @param expresion La expresión ingresada en la calculadora
      * @return <ul>
-     *  <li> true: si el orden de los paréntesis es válido y correcto </li>
-     *  <li> false: si es incorrecto el orden o cantidad de paréntesis</li>
+     *  <li> true: si la colindancia es válida </li>
+     *  <li> false: si la colindancia es inválida</li>
      * </ul> 
      */
     public static boolean noColindaOperadoresParentesis(String expresion){
@@ -247,13 +248,23 @@ public class Valida {
             b=expresion.charAt(i);
             if(esOperador(a) && (b==')' || esOperador(b)))
                 resp=false;
-            if(a=='(' && esOperador(b))
+            if(a=='(' && esOperador(a))
                 resp=false;
             i++;
         }
     return resp;
     }
-    
+    /**
+     * <pre>
+     * Valida que no hayan operadores en el principio o en el final
+     * Ej. false: 2+3- ó +2-3
+     * </pre>
+     * @param expresion La expresión ingresada en la calculadora
+     * @return <ul>
+     *  <li> true: si no hay operadores en el principio o final </li>
+     *  <li> false: si hay operadores en el principio o final </li>
+     * </ul> 
+     */
     public static boolean noOperadorPrincipioFinal(String expresion){
         char a;
         int i=0;
@@ -271,19 +282,28 @@ public class Valida {
     }
     
     /**
-     * Método que valida el orden y cantidad de los paréntesis
-     * 
+     * Implementa tanto noColindaOperadoresParentesis como noOperadorPrincipioFinal
      * @param expresion La expresión ingresada en la calculadora
      * @return <ul>
-     *  <li> true: si el orden de los paréntesis es válido y correcto </li>
-     *  <li> false: si es incorrecto el orden o cantidad de paréntesis</li>
+     *  <li> true: si la sintaxis de operadores es correcta </li>
+     *  <li> false: si la sintaxis de operadores es incorrecta</li>
      * </ul>
+     * @see noColindaOperadoresParentesis
+     * @see noOperadorPrincipioFinal
      */
-    
     public static boolean validaOperadores(String expresion){
         return noColindaOperadoresParentesis(expresion) && noOperadorPrincipioFinal(expresion);
     }
     
+    /**
+     * Revisa que no haya más de un punto decimal por número
+     * Ej. false: 9.67.8
+     * @param expresion La expresión ingresada en la calculadora
+     * @return <ul>
+     *  <li> true: si no hay más de un punto decimal por número </li>
+     *  <li> false: si hay más de un punto decimal por número</li>
+     * </ul>
+     */
     public static boolean unPuntoPorNumero(String expresion){
         boolean resp=true;
         char a;
@@ -305,6 +325,15 @@ public class Valida {
         return resp;
     }
     
+    /**
+     * Revisa que no haya un punto decimal entre paréntesis que abren y cierran u operadores
+     * Ej. false: (.) ó +.-
+     * @param expresion La expresión ingresada en la calculadora
+     * @return <ul>
+     *  <li> true: si no hay punto decimal entre paréntesis u operadores </li>
+     *  <li> false: si hay punto decimal entre paréntesis u operadores</li>
+     * </ul>
+     */
     public static boolean noPuntoEntreOperadoresParentesis(String expresion){
         char a, b, c;
         int i=2;
@@ -322,6 +351,14 @@ public class Valida {
     return resp;
         }
     
+    /**
+     * Revisa que se hayan quitado todos los símbolos negativos
+     * @param expresion La expresión ingresada en la calculadora
+     * @return <ul>
+     *  <li> true: si hay símbolos negativos </li>
+     *  <li> false: si no hay símbolos negativos</li>
+     * </ul>
+     */
     public static boolean validaNegativo(String expresion){
         boolean resp=true;
         char a;
@@ -335,16 +372,37 @@ public class Valida {
         return resp; 
     }
     
+    /**
+     * Implementa tanto unPuntoPorNumero como noPuntoEntreOperadoresParentesis
+     * @param expresion La expresión ingresada en la calculadora
+     * @return <ul>
+     *  <li> true: si la sintaxis de decimales es correcta </li>
+     *  <li> false: si la sintaxis de decimales es incorrecta</li>
+     * </ul>
+     * @see unPuntoPorNumero
+     * @see noPuntoEntreOperadoresParentesis
+     */
     public static boolean validaDecimales(String expresion){
         return unPuntoPorNumero(expresion) && noPuntoEntreOperadoresParentesis(expresion);
     }
     
+    /**
+     * <pre>
+     * Revisa los paréntesis, decimales, operadores y símbolos negativos en su totalidad
+     * Éste método se utiliza al ejecutar el botón de "=".
+     * </pre>
+     * @param expresion La expresión ingresada en la calculadora
+     * @return <ul>
+     *  <li> true: si la sintaxis es correcta </li>
+     *  <li> false: si existe error de sintáxis</li>
+     * </ul>
+     * 
+     */
     public static boolean valida(String expresion){
         expresion=fixNegativo(expresion);
         return validaParentesis(expresion) && validaDecimales(expresion) && validaOperadores(expresion) && validaNegativo(expresion);
     }
     
-    /* Utilizado para pruebas
     public static void testValida(String expresion){
         boolean valorDeRealidad;
         valorDeRealidad=valida(expresion);
@@ -357,38 +415,38 @@ public class Valida {
         System.out.println(valida(expresion)==valorDeRealidad);
     }
     
-    // Todos los prints del test deben ser 'true' 
+    /* Todos los prints del test deben ser 'true' */
     public static void testValida(){
         System.out.println("\nTest Valida:");
-        // ordenParentesis 
+        /* ordenParentesis */
         testValida(")1+2(",false);
         testValida("(1+2)",true);
         testValida("((1+2)",false);
         testValida("((1+2))",true);
         testValida("(1+2))",false);
-        // noColindaParentesis 
+        /* noColindaParentesis */
         testValida("1+2+()",false);
         testValida("(1+2)(1+2)",false);
         testValida("(1+2)*(1+2)",true);
         testValida("(1+2(1+2))",false);
         testValida("((1+2)1+2)",false);
-        // noColindaOperadoresParentesis 
+        /* noColindaOperadoresParentesis */
         testValida("1++2",false);
-        testValida("(/1+2)",false);
+        testValida("(+1+2)",false);
         testValida("(1+2+)",false);
-        // noOperadorPrincipioFinal 
+        /* noOperadorPrincipioFinal */
         testValida("+1+2",false);
         testValida("1+2+",false);
-        // unPuntoPorNumero 
+        /* unPuntoPorNumero */
         testValida("1.2",true);
         testValida(".12",true);
         testValida("12.",true);
         testValida(".1.2",false);
         testValida("1+2..",false);
         testValida("1+..2",false);
-        // noPuntoEntreOperadoresParentesis 
+        /* noPuntoEntreOperadoresParentesis */
         testValida("1+.+2",false);
         testValida("1+2+(.)",false);
         testValida("1+(2)",true);
-    }*/
+    }
 }

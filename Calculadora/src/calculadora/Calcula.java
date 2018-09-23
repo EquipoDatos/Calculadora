@@ -9,30 +9,34 @@ import java.util.ArrayList;
 /**
  * <pre>
  * Clase Calcula
- *  Esta clase contiene todos los metodos que lleva acabo la calculadora.
+ *  Clase que contiene todos los métodos que realiza la calculadora para obtener un resultado.
  * 
  *
- * @author Alberto Harari
+ * @author Alberto Jafif
  * @author Abraham Attie
  * @author David Ramos
- * @author Marco 
- * @author Patricio Falcon
+ * @author Marco Palermo
+ * @author Patricio Falcón
  * 
  * </pre>
  */
 
 public class Calcula {
+    
     /**
      * <pre>
      *
-     * Indica la prioridad de un Operador ya sea +, - , *, /
-     * Le da cierta jerarquia a los operadores para poder compararlos y que en otro metodo la calculadora sepa que operadores llevar a cabo primero. 
-     * @param c recibe un Operador 
-     * @return regresa un entero del 1 al 3 que indica la prioridad del Operador
-     * 
+     * Indica la jerarquía de un operador
+     * Da cierta jerarquia a los operadores para poder comparar entre ellos al realizar la traducción a postfija
      * </pre>
+     * @param c recibe un operador 
+     * @return int <ul>
+     *  <li> 1: si es ( </li>
+     *  <li> 2: si es + ó - </li>
+     *  <li> 3: si es * ó /</li>
+     * </ul>
+     * 
      */
-    
     public static int indicaPrioridad(char c){
         int resp=0;
     
@@ -57,14 +61,10 @@ public class Calcula {
     }
     /**
      * <pre>
-     * Convierte el String que el usuario escribe en la calculadora, a un ArrayList
-     * Utiliza un for que revisa caracter por caracter de la cadena, cunado encuentra un operador automaticamente guarda en una casilla lo que lleva el StringBuilder, y en otra casilla guarda el operador. Limpia el StringBuilder y reinicia el proceso. 
-     * Se creo para ordenar la cadena y trabajarla de una manera más sencilla.
-     * 
-  
-     * Agrega el String por orden de izquierda a derecha. 
-     * @param expresion:  es la cadena de Operandos, Operadores y puntos que el usuario escribe en la calculadora
-     * @return un ArrayList en la cual en cada casilla contiene un numero double o un operador. 
+     * Convierte la expresión de String que el usuario escribe en la calculadora a un ArrayList con los elementos de la operación utilizando StringBuilder
+     * Se creo para ordenar la cadena y trabajarla de una manera más sencilla
+     * @param expresion  La cadena de Operandos, Operadores y puntos que el usuario escribe en la calculadora
+     * @return un ArrayList en la cual en cada casilla contiene un numero double, un operador o paréntesis
      * </pre>
      */
     public static ArrayList<Object> convierteAArrayList(String expresion){
@@ -91,14 +91,11 @@ public class Calcula {
     
     /**
      * <pre>
-     * Este metodo únicamente convierte de infijo a postfijo
-     * Analiza cada casilla del ArrayList que recibe cuando encuentra un Operador o un Parentesis aplica metodos para ordenar a postfijo
+     * Convierte de notación infija a postfija
      * @param array recibe el ArrayList del metodo convierteAArrayList
+     * @return Regresa un ArrayList con los mismos elementos pero en orden de notación postfija
      * @see convierteAArrayList 
      * @see indicaPrioridad
-     * 
-     * 
-     * @return regresa el ArrayList de los valores ya acomodados de la forma postfijo. 
      * </pre>
      */
     public static ArrayList<Object> traduccionAPostfija(ArrayList<Object> array){
@@ -131,6 +128,14 @@ public class Calcula {
         return resultado;
     }
     
+    /**
+     * <pre>
+     * Inserta un ArrayList a una pila, con el útimo elemento del ArrayList como el primero en la pila
+     * @param arreglo recibe el ArrayList del metodo traduccionAPostfija
+     * @return Regresa una pila con los elementos
+     * @see traduccionAPostfija
+     * </pre>
+     */
     public static PilaA<Object> traduccionAPilaA(ArrayList<Object> arreglo){
         PilaA<Object> resultado = new PilaA();
         for(int i=arreglo.size()-1; i>=0; i--){
@@ -140,35 +145,41 @@ public class Calcula {
         return resultado;
     }
     
+    /**
+     * <pre>
+     * Calcula el resultado de la operación utilizando una pila auxiliar
+     * @param pila La pila con la expresión en postfija
+     * @return Regresa el resultado de la operación en double
+     * </pre>
+     */
     public static double calculaResultado(PilaA<Object> pila){
         
-        double primerNumero=0, segundoNumero=0, resultado=0;
+        double primerNumero=0, secundoNumero=0, resultado=0;
         Object obj;
         PilaA<Object> aux= new PilaA();
         while(!(pila.isEmpty())){
             obj=pila.pop();
             if (obj instanceof Double){
                 aux.push(obj);
-                resultado=(double)obj;
             }
             else if(obj instanceof Character){
-                segundoNumero = (double)aux.pop();
+                secundoNumero = (double)aux.pop();
                 primerNumero = (double)aux.pop();
                 switch ((char)obj){
                     case '+':
-                        resultado = primerNumero+segundoNumero;
+                        resultado = primerNumero+secundoNumero;
                         break;
                     case '-':
-                        resultado = primerNumero-segundoNumero;
+                        resultado = primerNumero-secundoNumero;
                         break;
                     case '*':
-                        resultado = primerNumero*segundoNumero;
+                        resultado = primerNumero*secundoNumero;
                         break;
                     case '/':
-                        if (segundoNumero == 0) {
+                        if (secundoNumero == 0) {
                             System.out.println("DIVISION BY ZERO!!");
                             throw new ArithmeticException("No se puede divider por zero!!");}
-                        resultado = primerNumero/segundoNumero;
+                        resultado = primerNumero/secundoNumero;
                         break;
             }
                 aux.push(resultado);
@@ -176,7 +187,7 @@ public class Calcula {
         }
         return resultado;
     }
-    /* Utilizado para pruebas
+    
     public static void testConvierteAArrayList(String expresion){
         ArrayList <Object> arreglo;
         arreglo = convierteAArrayList(expresion);
@@ -219,7 +230,7 @@ public class Calcula {
         testTraduccionAPostfija(expresion);
         testTraduccionAPilaA(expresion);
         testCalculaResultado(expresion);
-    }*/
+    }
 }
 
 
