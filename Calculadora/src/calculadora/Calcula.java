@@ -94,7 +94,7 @@ public class Calcula {
      * Este metodo únicamente convierte de infijo a postfijo
      * Analiza cada casilla del ArrayList que recibe cuando encuentra un Operador o un Parentesis aplica metodos para ordenar a postfijo
      * @param array recibe el ArrayList del metodo convierteAArrayList
-     * @see convierteAArrayList tfijo
+     * @see convierteAArrayList 
      * @see indicaPrioridad
      * 
      * 

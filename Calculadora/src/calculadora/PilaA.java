@@ -8,16 +8,16 @@ package calculadora;
 /**
  * <pre>
  * Clase Pila
- * Se utiliza para formar pilas en las demás clases de la calculadora y asi guardar estructuar datos.
- * Implementa la interfaz PilaADT que onbliga a esta clase a tener ciertos métodos. 
+ * Se utiliza para formar pilas en las demás clases de la calculadora y trabajar con los datos.
+ * Implementa la interfaz PilaADT que obliga a ésta clase a tener ciertos métodos. 
  * 
  * 
  *
- * @author Alberto Harari
+ * @author Alberto Jafif
  * @author Abraham Attie
  * @author David Ramos
  * @author Marco Palermo
- * @author Patricio Falcon
+ * @author Patricio Falcón
  * 
  * </pre>
  */

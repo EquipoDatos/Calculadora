@@ -8,15 +8,15 @@ package calculadora;
 /**
  * <pre>
  *  Interfaz PilaADT
- *  Indica a la clase PilaA a tener ciertas funcionalidades y métodos. 
+ *  Indica los métodos que tendrá la clase PilaA. 
  * 
  * 
  *
- * @author Alberto Harari
+ * @author Alberto Jafif
  * @author Abraham Attie
  * @author David Ramos
  * @author Marco Palermo
- * @author Patricio Falcon
+ * @author Patricio Falcón
  * 
  * </pre>
  */
