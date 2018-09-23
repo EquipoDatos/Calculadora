@@ -24,6 +24,11 @@ package calculadora;
  * </pre>
  */
 public class Valida {
+    /**
+     * 
+     * @param e
+     * @return 
+     */
     
     public static boolean esNumero(char e){
         boolean resp = false;
