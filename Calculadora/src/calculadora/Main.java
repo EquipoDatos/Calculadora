@@ -7,7 +7,7 @@ package calculadora;
 
 /**
  * <pre>
- * Clase Main
+ * Clase Main:
  * Es únicamente una clase de prueba del funcionamiento de la calculadora y algunos metodos
  * 
  *

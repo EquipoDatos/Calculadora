@@ -7,7 +7,7 @@ package calculadora;
 
 /**
  * <pre>
- * Clase de Excepción
+ * Clase de Excepción:
  * 
  * Unicamente sirve para expresar un error en caso de ser encontrado.
  * 

@@ -6,9 +6,9 @@
 package calculadora;
 /**
  * <pre>
- * Clase Valida
+ * Clase Valida:
  * 
- * Contiene las validaciones previas al cálculo de la expresión
+ * Contiene las validaciones previas al cálculo de la expresión.
  * Se implementan varios métodos que revisan y validan la cadena char por char.
  * Considera los paréntesis, operadores y números (con sus decimales).
  *  

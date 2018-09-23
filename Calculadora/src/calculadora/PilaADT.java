@@ -7,7 +7,7 @@ package calculadora;
 
 /**
  * <pre>
- *  Interfaz PilaADT
+ *  Interfaz PilaADT:
  *  Indica los métodos que tendrá la clase PilaA. 
  * 
  * 

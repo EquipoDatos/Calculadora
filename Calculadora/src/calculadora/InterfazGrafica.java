@@ -12,7 +12,7 @@ import static calculadora.Calcula.traduccionAPostfija;
 
 /**
  * <pre>
- * Clase InterfazGráfica
+ * Clase InterfazGráfica:
  * 
  * Se encuentra el diseño y la creación de la calculadora de manera gráfica.
  * Se le atribuyen acciones a ciertos botones de la calculadora por medio de los metodos de las clases Valida y Calcula. 

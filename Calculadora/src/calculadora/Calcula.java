@@ -8,8 +8,8 @@ package calculadora;
 import java.util.ArrayList;
 /**
  * <pre>
- * Clase Calcula
- *  Clase que contiene todos los métodos que realiza la calculadora para obtener un resultado.
+ * Clase Calcula:
+ *  Contiene todos los métodos que realiza la calculadora para obtener un resultado.
  * 
  *
  * @author Alberto Jafif
