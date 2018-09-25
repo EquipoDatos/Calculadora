@@ -531,7 +531,6 @@ public class InterfazGrafica extends javax.swing.JFrame {
         }
         else{
             jTextField1.setText("Syntax Error"); 
-            sb.delete(0, sb.length());
         }
     }//GEN-LAST:event_equalsButtonActionPerformed
 
