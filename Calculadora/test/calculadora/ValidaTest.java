@@ -10,7 +10,12 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author marcopalermo
+ * @author Alberto Jafif
+ * @author Abraham Attie
+ * @author David Ramos
+ * @author Marco Palermo
+ * @author Patricio Falcón
+ * 
  */
 public class ValidaTest {
     
